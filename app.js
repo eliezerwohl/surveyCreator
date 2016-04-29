@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 //don't need database yet
 // require("./server/models/db");
-// require('./routes')(app);
+require('./routes')(app);
 
 
 app.listen(PORT, function(){
