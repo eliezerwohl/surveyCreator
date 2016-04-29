@@ -16,22 +16,40 @@ $scope.singleInput = function(){
 }
 
 $scope.textArea = function(){
-
 	// document.getElementById("target").innerHTML = "";
 	$rootScope.type = "text";
 	// angular.element(document.getElementById('target'))
 	// .append("<h2> question for text area </h2> <input ng-model='userInput'>") 
+		$scope.inputs.push({
+		name: 'Question ',
+    model: ""
+	},
+	{
+		name: 'Lines ',
+    model: ""
+	}
+	)
 }
 
 $scope.save = function(){
-	  $scope.saveIt = ("<h2>" + $scope.inputs[0].model + "</h2> <input>");
-	   console.log($scope.inputs)
+		if ($rootScope.type ==="text"){
+		  $scope.saveIt = ("<h2>" + $scope.inputs[0].model + "</h2> <textarea  id='answer' rows='" + $scope.inputs[1].model + "''>");
+	    angular.element(document.getElementById('target'))
+		 .append($scope.saveIt) 
+		}
+		else if($rootScope.type ==="single"){
+	   $scope.saveIt = ("<h2>" + $scope.inputs[0].model + "</h2> <input id='answer'>");
 	   angular.element(document.getElementById('target'))
 		.append($scope.saveIt) 
   // document.getElementById("target").innerHTML = "";
+  	}
 
 }
 
-// $scope.showSave = function()
+$scope.showSave = function(){
+var jah = document.getElementById("answer").value
+console.log(jah)
+
+}
 
 })
