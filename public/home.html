@@ -8,6 +8,10 @@
 	<title>surveyCreator</title>
 </head>
 <body ng-app="app">
+<li><a ui-sref="index">Web Coding</a></li>
+ <div ui-view autoscroll="false"></div>
+
+
 
 	<div ng-controller="create">
 		<button ng-click="showSave()"> show save </button>
@@ -23,6 +27,7 @@
 		</div>
 	</div>
 {{2+2}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
 <script src="/assets/javascript/app.js"></script>
 </body>

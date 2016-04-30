@@ -1,5 +1,15 @@
-var app = angular.module('app', ["ui.bootstrap"]);
+var app = angular.module('app', ["ui.bootstrap", 'ui.router']);
 
+app.config(function($stateProvider, $urlRouterProvider){
+	$urlRouterProvider.otherwise('/home')
+ $stateProvider
+  // HOME STATES AND NESTED VIEWS ========================================
+    .state('index', {
+      url: '/index',
+      templateUrl: '../views/index.html'
+    })
+
+})
 app.controller('create', function($scope, $rootScope) {
 	$scope.inputs = [];
 
