@@ -4,6 +4,7 @@ var PORT = process.env.PORT || 8080;
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser")
+var mongoose = require('mongoose');
 
 app.use(logger('dev'));
 app.use(express.static('public'));
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 //don't need database yet
-// require("./server/models/db");
+require("./server/models/db");
 require('./routes')(app);
 
 
