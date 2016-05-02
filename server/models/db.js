@@ -16,7 +16,6 @@ mongoose.connection.on("connected", function() {
 });
 
 
-
 mongoose.connection.on("error", function() {
 	console.log("mongoose connection err ");
 });
