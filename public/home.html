@@ -8,24 +8,12 @@
 	<title>surveyCreator</title>
 </head>
 <body ng-app="app">
-<li><a ui-sref="index">Web Coding</a></li>
+<!-- <li><a ui-sref="index">Web Coding</a></li> -->
  <div ui-view autoscroll="false"></div>
 
 
 
-	<div ng-controller="create">
-		<button ng-click="showSave()"> show save </button>
-		<button ng-click="textArea()">text area</button>
-		<button ng-click="singleInput()">single Input</button>
-		<div class ng-repeat="input in inputs">
-			{{input.name}}
-			<input class="form-control" ng-model="input.model">
-		</div>
-		<button ng-click="save()">  Save </button>
-		<div id="target">
-			<h3>results are below </h3>
-		</div>
-	</div>
+
 {{2+2}}
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>

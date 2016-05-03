@@ -1,7 +1,7 @@
 var app = angular.module('app', ["ui.bootstrap", 'ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise('/home')
+	$urlRouterProvider.otherwise('/index')
  $stateProvider
   // HOME STATES AND NESTED VIEWS ========================================
     .state('index', {
