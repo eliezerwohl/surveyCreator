@@ -8,6 +8,10 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/index',
       templateUrl: '../views/index.html'
     })
+    .state('signUp', {
+      url: '/signUp',
+      templateUrl: '../views/signUp.html'
+    })
 
 })
 app.controller('create', function($scope, $rootScope) {
