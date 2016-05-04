@@ -1,8 +1,10 @@
-<div controller="home">
-	<input>First Name
-	<input>Last Name
-	<input>Email
-	<input>Password
-	<button type="submit"> Submit
-	</button>
+<div ng-controller="home">
+	<form ng-submit="signUp()">
+		<input ng-model="firstName">First Name
+		<input ng-model="lastName">Last Name
+		<input type="email" ng-model="email">Email
+		<input type="password" ng-model="password">Password
+		<button type="submit" > Submit
+		</button>
+	</form>
 </div>
