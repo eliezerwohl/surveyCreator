@@ -1,7 +1,16 @@
-app.controller("home", function($scope){
+app.controller("home", function($scope, $http){
 
 	$scope.signUp =function(){
-		console.log($scope.firstName)
+	$http({
+		method:"Post",
+		url:"/signUp",
+		data:{"firstName":$scope.firstName}
+	}).then(function successCallback(response){
+
+	}, function errorCallback(reponse){
+
+	});
+
 	}
 
 
