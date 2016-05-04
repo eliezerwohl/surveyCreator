@@ -4,7 +4,10 @@ app.controller("home", function($scope, $http){
 	$http({
 		method:"Post",
 		url:"/signUp",
-		data:{"firstName":$scope.firstName}
+		data:{"firstName":$scope.firstName, 
+					"lastName":$scope.lastName, 
+					"email":$scope.email,
+					"password":$scope.password}
 	}).then(function successCallback(response){
 
 	}, function errorCallback(reponse){
