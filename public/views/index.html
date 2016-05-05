@@ -1,8 +1,8 @@
-<div class="home">
-	<form>
-		<input> User name
-		<input> password
-		<button ng-click="userLogin"> login 	</button>
+<div ng-controller="home">
+	<form ng-submit="login()">
+		<input ng-model="username"> User name
+		<input ng-model="password"> password
+		<button type="submit"> login 	</button>
 		<button ui-sref="signUp"> sign up </button>
 	</form>
 </div>

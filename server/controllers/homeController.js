@@ -1,5 +1,6 @@
 var User = require("../models/user");
 var bcrypt =require("bcryptjs");
+
 function saltyhash(pass) {
   var salt = bcrypt.genSaltSync(10);
   var hash = bcrypt.hashSync(pass, salt);
@@ -17,7 +18,7 @@ exports.signUp = function (req, res){
 		else{
 			var newUser = new User({"firstName":req.body.firstName,
 														"lastName":req.body.lastName,
-														"email":req.body.email,
+														"username":req.body.email,
 														"password":saltyhash(req.body.password)});
 			newUser.save(function (err, doc) {
 				if (err){
