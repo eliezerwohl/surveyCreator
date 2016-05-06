@@ -11,7 +11,7 @@ app.controller("home", function($scope, $http, $state){
 				console.log("no")
 			}
 			else if(response.data="success"){
-				alert("did it")
+				$state.go("loggedIn")
 			}
 		}, function errorCallback(response){
 			debugger
