@@ -1,4 +1,5 @@
 var User = require("../models/user");
+var Survey = require("../models/survey");
 var bcrypt =require("bcryptjs");
 
 function saltyhash(pass) {
@@ -7,8 +8,17 @@ function saltyhash(pass) {
   return hash;
 }
 exports.newSurvey = function(req, res){
-	//create new survey, put user id in it
-	debugger
+	//create new survey, put user id in it req.session.user._id
+	var newSurvey = new Survey({"_user":req.session.user._id});
+	newSurvey.save(function (err, doc) {
+		if (err){
+			console.log(err)
+		}
+		else{
+			res.send(doc)
+			console.log(doc)
+		}
+	});
 }
 exports.signUp = function (req, res){
 	User.findOne({email:req.body.email}, function(err, user){
