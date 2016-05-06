@@ -1,6 +1,18 @@
+<div ng-controller="create">	
 	<h3> pick a question type </h3>
-
-	<button>input </button>
-	<button> text area </button>
-	<button> radio </button>
-	<button>  checkbox </button>
+	<button ng-click="inputType('input')">input </button>
+	<button ng-click="inputType('textarea')"> text area </button>
+	<button ng-click="inputType('radio')"> radio </button>
+	<button ng-click="inputType('checkbox')">  checkbox </button>
+	<div ng-show="selectedInput ==='input'">
+		<h3> Put your question here </h3>
+		<input ng-model="testInput"> 
+	</div>
+	<div ng-show="selectedInput ==='textarea'">
+		<h3> Put your question here </h3>
+		<input ng-model="text"> 
+		<h3> how many lines long </h3>
+		<input ng-model="lines">
+	</div>
+	<button ng-click="createQuestion()" ng-show="selectedInput != undefined"> Save </button>
+</div>
