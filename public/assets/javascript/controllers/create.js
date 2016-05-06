@@ -1,8 +1,28 @@
-app.controller('create', function($scope) {
+app.controller('create', function($scope, $rootScope, $http) {
 
 	$scope.inputType=function(input){
 		$scope.selectedInput = input
 		console.log(input)
+	}
+
+	$scope.createQuestion = function(){
+
+		if (($scope.selectedInput == "input") || ($scope.selectedInput == "textarea")) {
+			$http({
+			method:"POST",
+			url:"/createQuestion",
+			data:{"type":$scope.selectedInput, 
+						"lines":$scope.lines, 
+						"text":$scope.text}
+		}).then(function successCallback(response){
+
+		}, function errorCallback(reponse){
+
+		});
+		}
+		else if ($scope.selectedInput == "textarea"){
+			console.log("text area hit")
+		}
 	}
 	
 
