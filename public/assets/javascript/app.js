@@ -12,6 +12,10 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/signUp',
       templateUrl: '../views/signUp.html'
     })
+    .state('loggedIn', {
+      url: '/loggedIn',
+      templateUrl: '../views/loggedIn.html'
+    })
 
 })
 app.controller('create', function($scope, $rootScope) {
