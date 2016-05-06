@@ -6,6 +6,10 @@ function saltyhash(pass) {
   var hash = bcrypt.hashSync(pass, salt);
   return hash;
 }
+exports.newSurvey = function(req, res){
+	//create new survey, put user id in it
+	debugger
+}
 exports.signUp = function (req, res){
 	User.findOne({email:req.body.email}, function(err, user){
 		debugger

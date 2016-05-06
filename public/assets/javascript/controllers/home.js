@@ -1,5 +1,17 @@
 app.controller("home", function($scope, $http, $state){
 
+	$scope.newSurvey=function(){
+		console.log("new survey")
+		$http({
+			method:"POST",
+			url:"/newSurvey"
+		}).then(function successCallback(response){
+			debugger
+		}, function errorCallback(response){
+			debugger
+		});
+	}
+
 	$scope.login=function(){
 		$http({
 			method:"POST",

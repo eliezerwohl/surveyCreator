@@ -63,6 +63,7 @@ module.exports = function(app) {
 		res.sendFile(process.cwd() + "/public/home.html")
 	});
 	app.post("/signUp", home.signUp);
+	app.post("/newSurvey", home.newSurvey);
 	app.post('/login', function(req, res, next) {
 		passport.authenticate('login', function(err, user, info) {
 			if (err) {
