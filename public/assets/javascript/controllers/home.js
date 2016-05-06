@@ -1,4 +1,4 @@
-app.controller("home", function($scope, $http){
+app.controller("home", function($scope, $http, $state){
 
 	$scope.login=function(){
 		$http({
@@ -7,9 +7,14 @@ app.controller("home", function($scope, $http){
 			data:{"username":$scope.username,
 						"password":$scope.password}
 		}).then(function successCallback(response){
-
-		}, function errorCallback(reponse){
-
+			if (response.data == "error"){
+				console.log("no")
+			}
+			else if(response.data="success"){
+				alert("did it")
+			}
+		}, function errorCallback(response){
+			debugger
 		});
 	}
 	$scope.signUp =function(){
@@ -26,7 +31,5 @@ app.controller("home", function($scope, $http){
 
 		});
 	}
-
-
 })//end of controller
 
