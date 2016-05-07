@@ -9,6 +9,7 @@ var QuestionSchema = new Schema({
 	text:String,
 	type:{type:String, default:"input"},
 	lines:{type:Number, default:1},
+	options:[],
 	//if radio or checkbox
 	_answer:[{type:Schema.Types.ObjectId,
 						ref:"answer"}]

@@ -6,7 +6,7 @@ app.controller("home", function($scope, $http, $state){
 			method:"POST",
 			url:"/newSurvey"
 		}).then(function successCallback(response){
-			debugger
+			$state.go("createSurvey")
 		}, function errorCallback(response){
 			debugger
 		});
