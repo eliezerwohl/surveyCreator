@@ -4,13 +4,11 @@
 	<button ng-click="inputType('textarea')"> text area </button>
 	<button ng-click="inputType('radio')"> radio </button>
 	<button ng-click="inputType('checkbox')">  checkbox </button>
-	<div ng-show="selectedInput ==='input'">
+	<div ng-show="selectedInput ==='input' || selectedInput ==='textarea'">
 		<h3> Put your question here </h3>
 		<input ng-model="text"> 
 	</div>
 	<div ng-show="selectedInput ==='textarea'">
-		<h3> Put your question here </h3>
-		<input ng-model="text"> 
 		<h3> how many lines long </h3>
 		<input ng-model="lines">
 	</div>
