@@ -1,5 +1,5 @@
 app.controller('create', function($scope, $rootScope, $http) {
-	
+
 	$scope.inputType=function(input){
 		$scope.selectedInput = input
 		console.log(input)
@@ -40,7 +40,7 @@ $scope.options = []
 		}
 		console.log('create')
 		$scope.optionsArray = [];
-		if ($scope.selectedInput == "radio") {
+		if (($scope.selectedInput == "radio") || ($scope.selectedInput == "checkbox")) {
 			var inputs = document.getElementsByClassName('optionInput');
 			var l = inputs.length
 			for (i = 0; i < l; i++) {

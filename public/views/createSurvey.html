@@ -14,7 +14,7 @@
 		<h3> how many lines long </h3>
 		<input ng-model="lines">
 	</div>
-	<div ng-show="selectedInput ==='radio'">
+	<div ng-show="selectedInput ==='radio' || selectedInput === 'checkbox' ">
 		<h3> Put your question here </h3>
 		<input ng-model="text"> 
 		<button ng-click="addOption()"> Add options
