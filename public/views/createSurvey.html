@@ -6,13 +6,25 @@
 	<button ng-click="inputType('checkbox')">  checkbox </button>
 	<div ng-show="selectedInput ==='input'">
 		<h3> Put your question here </h3>
-		<input ng-model="testInput"> 
+		<input ng-model="text"> 
 	</div>
 	<div ng-show="selectedInput ==='textarea'">
 		<h3> Put your question here </h3>
 		<input ng-model="text"> 
 		<h3> how many lines long </h3>
 		<input ng-model="lines">
+	</div>
+	<div ng-show="selectedInput ==='radio'">
+		<h3> Put your question here </h3>
+		<input ng-model="text"> 
+		<button ng-click="addOption()"> Add options
+		</button>
+	<br>
+	<button ng-click="getValue()"> get value </button>
+		<span id="options"></span>
+		<div ng-repeat="option in options">
+		{{option.text}}<input class="optionInput">
+		</div>
 	</div>
 	<button ng-click="createQuestion()" ng-show="selectedInput != undefined"> Save </button>
 </div>

@@ -5,23 +5,77 @@ app.controller('create', function($scope, $rootScope, $http) {
 		console.log(input)
 	}
 
-	$scope.createQuestion = function(){
+$scope.options = []
 
-		if (($scope.selectedInput == "input") || ($scope.selectedInput == "textarea")) {
+// 	$scope.getValue= function(){
+// 		 var inputs = document.getElementsByClassName('optionInput');
+// for (i = 0; i < inputs.length;  i++) {
+
+// 	debugger
+//     // deal with inputs[index] element.
+// }
+	// }
+	$scope.addOption = function(){
+		var test ={"text":"option here"}
+		$scope.options.push(test)
+		console.log($scope.options)
+
+	}
+	$scope.createQuestion = function(){
+		console.log('create')
+		$scope.optionsArray =[];
+		if ($scope.selectedInput == "radio"){
+
+		 		var inputs = document.getElementsByClassName('optionInput');
+		 		var l = inputs.length
+				for (i = 0; i < l;  i++) {
+				
+					var option = {"option":inputs[i].value}
+    			$scope.optionsArray.push(option)
+    			debugger
+    			console.log($scope.optionsArray)
+    			console.log(l)
+
+ 					
+    				if ($scope.optionsArray.length === l){
+    					debugger
+    					console.log("scope.options " + $scope.optionsArray)
+    					$http({
+			method:"POST",
+			url:"/createQuestion",
+			data:{"type":$scope.selectedInput, 
+						"lines":$scope.lines, 
+						"text":$scope.text,
+						"options":$scope.optionsArray}
+		}).then(function successCallback(response){
+			debugger
+
+		}, function errorCallback(reponse){
+
+		});
+    				}
+    		
+				
+			}
+		}
+		else if (($scope.selectedInput == "input") || ($scope.selectedInput == "textarea")) {
+			
+			console.log($scope.optionsArray)
 			$http({
 			method:"POST",
 			url:"/createQuestion",
 			data:{"type":$scope.selectedInput, 
 						"lines":$scope.lines, 
-						"text":$scope.text}
+						"text":$scope.text,
+						"options":optionsArray}
 		}).then(function successCallback(response){
 
 		}, function errorCallback(reponse){
 
 		});
-		}
-		else if ($scope.selectedInput == "textarea"){
-			console.log("text area hit")
+		// }
+		// else if ($scope.selectedInput == "textarea"){
+		// 	console.log("text area hit")
 		}
 	}
 	
