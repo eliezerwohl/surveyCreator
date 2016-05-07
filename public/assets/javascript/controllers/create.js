@@ -1,10 +1,9 @@
 app.controller('create', function($scope, $rootScope, $http) {
-
+	
 	$scope.inputType=function(input){
 		$scope.selectedInput = input
 		console.log(input)
 	}
-
 $scope.options = []
 
 // 	$scope.getValue= function(){
@@ -21,64 +20,44 @@ $scope.options = []
 		console.log($scope.options)
 
 	}
-	$scope.createQuestion = function(){
-		console.log('create')
-		$scope.optionsArray =[];
-		if ($scope.selectedInput == "radio"){
-
-		 		var inputs = document.getElementsByClassName('optionInput');
-		 		var l = inputs.length
-				for (i = 0; i < l;  i++) {
-				
-					var option = {"option":inputs[i].value}
-    			$scope.optionsArray.push(option)
-    			debugger
-    			console.log($scope.optionsArray)
-    			console.log(l)
-
- 					
-    				if ($scope.optionsArray.length === l){
-    					debugger
-    					console.log("scope.options " + $scope.optionsArray)
-    					$http({
-			method:"POST",
-			url:"/createQuestion",
-			data:{"type":$scope.selectedInput, 
-						"lines":$scope.lines, 
-						"text":$scope.text,
-						"options":$scope.optionsArray}
-		}).then(function successCallback(response){
-			debugger
-
-		}, function errorCallback(reponse){
-
-		});
-    				}
-    		
-				
-			}
-		}
-		else if (($scope.selectedInput == "input") || ($scope.selectedInput == "textarea")) {
-			
-			console.log($scope.optionsArray)
+	$scope.createQuestion = function() {
+		function questionCreateFunction() {
 			$http({
-			method:"POST",
-			url:"/createQuestion",
-			data:{"type":$scope.selectedInput, 
-						"lines":$scope.lines, 
-						"text":$scope.text,
-						"options":optionsArray}
-		}).then(function successCallback(response){
+				method: "POST",
+				url: "/createQuestion",
+				data: {
+					"type": $scope.selectedInput,
+					"lines": $scope.lines,
+					"text": $scope.text,
+					"options": $scope.optionsArray
+				}
+			}).then(function successCallback(response) {
 
-		}, function errorCallback(reponse){
 
-		});
-		// }
-		// else if ($scope.selectedInput == "textarea"){
-		// 	console.log("text area hit")
+			}, function errorCallback(reponse) {
+
+			});
+		}
+		console.log('create')
+		$scope.optionsArray = [];
+		if ($scope.selectedInput == "radio") {
+			var inputs = document.getElementsByClassName('optionInput');
+			var l = inputs.length
+			for (i = 0; i < l; i++) {
+				var option = {
+					"option": inputs[i].value
+				}
+				$scope.optionsArray.push(option)
+				if ($scope.optionsArray.length === l) {
+					//waits until all the values of the inputs are added to the array
+					console.log("scope.options " + $scope.optionsArray)
+					questionCreateFunction()
+				}
+			}
+		} else if (($scope.selectedInput == "input") || ($scope.selectedInput == "textarea")) {
+			questionCreateFunction()
 		}
 	}
-	
 
 // var idLength = 15
 // var id = [];
