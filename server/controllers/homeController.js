@@ -15,6 +15,7 @@ exports.newSurvey = function(req, res){
 			console.log(err)
 		}
 		else{
+			req.session.survey = doc._doc._id
 			res.send(doc)
 			console.log(doc)
 		}
