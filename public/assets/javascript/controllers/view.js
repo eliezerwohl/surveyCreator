@@ -12,21 +12,31 @@ app.controller("view", function($scope, $http, $state){
 			var data = response.data
 			
 			for (var i = 0; i < data.length; i++) {
-				debugger
+				
 
 				if(data[i].type === "input"){
 					var preview = "<h2>" + data[i].text + "</h2> <input>"
-					previewCreator(preview)
+					previewCreator(preview);
 				}
 				else if(data[i].type === "textarea"){
 					var preview = "<h2>" + data[i].text + "</h2> <textarea rows='" + data[0] + "'>"
-					previewCreator(preview)
+					previewCreator(preview) ;
 				}
 				else if(data[i].type === "radio"){
 					console.log("radio")
 				}
 				else if(data[i].type === "checkbox"){
-					console.log("checkbox")
+					var length = data[i].options.length 
+					var preview = "<h2>" + data[i].text + "</h2>";
+					for (var j = 0;  j < length; j++){
+						preview += "<input type = 'checkbox'>" + data[i].options[j].option
+						//minus 1 because j start at zero
+						if (j === length - 1){
+							previewCreator(preview);
+						}
+
+					}
+					
 				}
 				
 			}
