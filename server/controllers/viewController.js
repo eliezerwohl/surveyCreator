@@ -1,7 +1,15 @@
-var question = require("../models/question");
+var Question = require("../models/question");
 
 exports.previewSurvey = function(req, res){
-	debugger
-	console.log("will it run?")
-
+	//hard coding survey number so I can figure out how to render it, will
+	//put req.session.whatever in later
+	Question.find({"_survey":"572f7dbac823801140e12e95"})
+	.exec(function(err, docs){
+		if (err){
+			console.log (err)
+		}
+		else{
+			res.send(docs)
+		}
+	});
 }
