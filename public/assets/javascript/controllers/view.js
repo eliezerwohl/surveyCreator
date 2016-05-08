@@ -1,14 +1,27 @@
 app.controller("view", function($scope, $http, $state){
 
+	function storeData(value, id){
+	$http({
+			method:"POST",
+			url:"/storeData",
+			data:{"value":value, "id":id}
+		}).then(function successCallback(response){
+			debugger
+		}, function errorCallback(response){
+			debugger
+		});
+	}
+
 	$scope.test = function(){
-		debugger
 		var inputs = document.getElementsByTagName('input');
 			var l = inputs.length
 			
 			for (i = 0; i < l; i++) {
 					if ((inputs[i].type === "checkbox") && (inputs[i].checked === true )){
-						debugger
-						console.log('the value of this checkbox is' + inputs[i].value)
+						var value = inputs[i].value
+						var id = inputs[i].dataset.id
+						storeData(value, id)
+
 					}
 					else if ((inputs[i].type === "radio")  && (inputs[i].checked === true)) {
 						console.log("the value ofo this radion is" + inputs[i].value)
@@ -57,7 +70,8 @@ app.controller("view", function($scope, $http, $state){
 					var length = data[i].options.length 
 					var preview = "<h2>" + data[i].text + "</h2>";
 					for (var j = 0;  j < length; j++){
-						preview += "<input value ='" + data[i].options[j].option + "' type = 'checkbox'>" + data[i].options[j].option
+						preview += "<input data-id='" +  data[i]._id 
+						+"' value ='" + data[i].options[j].option + "' type = 'checkbox'>" + data[i].options[j].option
 						//minus 1 because j start at zero
 						if (j === length - 1){
 							previewCreator(preview);

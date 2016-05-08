@@ -66,6 +66,7 @@ module.exports = function(app) {
 	});
 	app.post("/signUp", home.signUp);
 	app.post("/newSurvey", home.newSurvey);
+	app.post("/storeData", create.storeData)
 	app.post('/login', function(req, res, next) {
 		passport.authenticate('login', function(err, user, info) {
 			if (err) {
