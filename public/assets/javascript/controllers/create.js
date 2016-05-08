@@ -1,19 +1,14 @@
-app.controller('create', function($scope, $rootScope, $http) {
+app.controller('create', function($state, $scope, $rootScope, $http) {
+
+	$scope.view=function(){
+		$state.go("previewSurvey")
+	}
 
 	$scope.inputType=function(input){
 		$scope.selectedInput = input
 		console.log(input)
 	}
-$scope.options = []
-
-// 	$scope.getValue= function(){
-// 		 var inputs = document.getElementsByClassName('optionInput');
-// for (i = 0; i < inputs.length;  i++) {
-
-// 	debugger
-//     // deal with inputs[index] element.
-// }
-	// }
+	$scope.options = []
 	$scope.addOption = function(){
 		var test ={"text":"option here"}
 		$scope.options.push(test)
