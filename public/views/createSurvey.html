@@ -1,4 +1,5 @@
 <div ng-controller="create">	
+	<button ng-click="view()"> View </button>
 	<h3> pick a question type </h3>
 	<button ng-click="inputType('input')">input </button>
 	<button ng-click="inputType('textarea')"> text area </button>
@@ -18,7 +19,6 @@
 		<button ng-click="addOption()"> Add options
 		</button>
 	<br>
-	<button ng-click="getValue()"> get value </button>
 		<span id="options"></span>
 		<div ng-repeat="option in options">
 		{{option.text}}<input class="optionInput">
