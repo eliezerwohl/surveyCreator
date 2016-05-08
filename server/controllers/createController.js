@@ -1,5 +1,9 @@
 var Question = require("../models/question");
 var Survey = require("../models/survey");
+
+exports.storeData = function(req, res){
+	debugger
+}
 exports.createQuestion=function(req, res){
 	debugger
 	var newQuestion = new Question({
