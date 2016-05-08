@@ -1,5 +1,9 @@
 app.controller("view", function($scope, $http, $state){
+	function previewCreator(previewQuestion){
+	angular.element(document.getElementById('target'))
+	.append(previewQuestion) 
 
+	}
 	$scope.previewSurvey = function(){
 		$http({
 			method:"GET",
@@ -11,10 +15,12 @@ app.controller("view", function($scope, $http, $state){
 				debugger
 
 				if(data[i].type === "input"){
-					console.log("this is input")
+					var preview = "<h2>" + data[i].text + "</h2> <input>"
+					previewCreator(preview)
 				}
 				else if(data[i].type === "textarea"){
-					console.log("textarea")
+					var preview = "<h2>" + data[i].text + "</h2> <textarea rows='" + data[0] + "'>"
+					previewCreator(preview)
 				}
 				else if(data[i].type === "radio"){
 					console.log("radio")
