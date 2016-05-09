@@ -2,6 +2,9 @@ var Question = require("../models/question");
 var Survey = require("../models/survey");
 
 exports.storeData = function(req, res){
+	//create new answer, put the question 
+	//find the question, push answer into array
+
 	debugger
 }
 exports.createQuestion=function(req, res){

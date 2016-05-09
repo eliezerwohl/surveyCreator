@@ -24,6 +24,10 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/createSurvey',
       templateUrl: '../views/createSurvey.html'
     })
+      .state('mail', {
+      url: '/mail',
+      templateUrl: '../views/mail.html'
+    })
 
 })
 app.controller('create', function($scope, $rootScope) {
