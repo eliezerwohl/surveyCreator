@@ -1,5 +1,22 @@
 app.controller('create', function($state, $scope, $rootScope, $http) {
 
+	$scope.shareSurvey=function(){
+		$http({
+				method: "GET",
+				url: "/shareSurvey",
+			}).then(function successCallback(response) {
+				if (response.data.local === true){
+					//this is local
+					$scope.msg = "Go to http://localhost:8080/#/viewSurvey/" + response.data.surveyId
+				}
+				else {
+					//for production
+					$scope.msg = "Go to name.herokuapp.com/#/viewSurvey/" + response.data.surveyId
+				}
+				
+			})
+	}
+
 	$scope.view=function(){
 		$state.go("previewSurvey")
 	}

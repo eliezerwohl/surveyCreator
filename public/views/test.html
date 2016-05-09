@@ -1,13 +1,3 @@
-	<div ng-controller="create">
-		<button ng-click="showSave()"> show save </button>
-		<button ng-click="textArea()">text area</button>
-		<button ng-click="singleInput()">single Input</button>
-		<div class ng-repeat="input in inputs">
-			{{input.name}}
-			<input class="form-control" ng-model="input.model">
-		</div>
-		<button ng-click="save()">  Save </button>
-		<div id="target">
-			<h3>results are below </h3>
-		</div>
-	</div>
+	<div ng-controller="create" ng-init="shareSurvey()">
+	{{msg}}
+	</div>	
