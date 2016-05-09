@@ -67,10 +67,11 @@ module.exports = function(app) {
 
 	app.post("/createQuestion", create.createQuestion);
 	app.get("/previewSurvey", view.previewSurvey);
-	app.get("/test/:surveyId", function(req, res){
-		debugger
-		console.log(window.local)
-		res.send("huh?")
+	app.get("/view", view.viewSurvey);
+	app.get("/viewSurvey/:surveyId", function(req, res){
+		req.session.fillSurvey = req.params.surveyId
+			res.sendFile(process.cwd() + "/public/survey.html" )
+		// res.send(req.params.surveyId)
 	})
 
 	app.get("/", function(req, res) {
