@@ -1,5 +1,9 @@
 app.controller('create', function($state, $scope, $rootScope, $http) {
 
+	$scope.test=function(){
+		alert("alter")
+	}
+
 	$scope.view=function(){
 		$state.go("previewSurvey")
 	}

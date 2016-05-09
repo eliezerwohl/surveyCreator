@@ -7,6 +7,10 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcryptjs");
 var User = require("../server/models/user")
+var cookieParser = require('cookie-parser')
+var express = require("express");
+var app = express()
+app.use(cookieParser())
 module.exports = function(app) {
 	app.use(require('express-session')({
 		secret: 'scroll_buttons',
@@ -60,8 +64,15 @@ module.exports = function(app) {
 	passport.deserializeUser(function(user, done) {
 		done(null, user);
 	});
+
 	app.post("/createQuestion", create.createQuestion);
 	app.get("/previewSurvey", view.previewSurvey);
+	app.get("/test/:surveyId", function(req, res){
+		res.cookie('cookie', req.params.surveyId, { maxAge: 900000, httpOnly: true });
+		//save to cookie have
+		res.send("cookie?")
+	})
+
 	app.get("/", function(req, res) {
 		res.sendFile(process.cwd() + "/public/home.html")
 	});
