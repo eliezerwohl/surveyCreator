@@ -1,6 +1,15 @@
 var Question = require("../models/question");
 var Survey = require("../models/survey");
 
+
+exports.shareSurvey = function(req, res){
+	debugger
+//hardcoded for now
+	var surveyId = "572f7dbac823801140e12e95"
+	var local = global.var
+	var info = {"local":local, "surveyId": surveyId}
+	res.send(info)
+}
 exports.storeData = function(req, res){
 	//create new answer, put the question 
 	//find the question, push answer into array

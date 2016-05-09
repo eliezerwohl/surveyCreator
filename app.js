@@ -1,6 +1,13 @@
 var express = require("express");
 var app = express();
 var PORT = process.env.PORT || 8080;
+
+
+if (PORT === 8080){
+	global.var=true
+		//save to cookie have
+		// res.send("cookie?")
+}
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser")

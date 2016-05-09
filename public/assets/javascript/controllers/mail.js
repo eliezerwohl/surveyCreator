@@ -1,6 +1,7 @@
 app.controller("mail", function($scope, $http, $state){
 
 $scope.sendMail=function(){
+	
 $http({
 			method:"POST",
 			url:"/mail"

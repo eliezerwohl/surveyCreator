@@ -68,14 +68,16 @@ module.exports = function(app) {
 	app.post("/createQuestion", create.createQuestion);
 	app.get("/previewSurvey", view.previewSurvey);
 	app.get("/test/:surveyId", function(req, res){
-		res.cookie('cookie', req.params.surveyId, { maxAge: 900000, httpOnly: true });
-		//save to cookie have
-		res.send("cookie?")
+		debugger
+		console.log(window.local)
+		res.send("huh?")
 	})
 
 	app.get("/", function(req, res) {
 		res.sendFile(process.cwd() + "/public/home.html")
 	});
+
+	app.get("/shareSurvey", create.shareSurvey)
 	app.post("/mail", mail.mail)
 	app.post("/signUp", home.signUp);
 	app.post("/newSurvey", home.newSurvey);
