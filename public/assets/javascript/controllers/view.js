@@ -1,10 +1,10 @@
 app.controller("view", function($scope, $http, $state){
 
-	function storeData(value, id){
+	function storeData(value, id, push){
 	$http({
 			method:"POST",
 			url:"/storeData",
-			data:{"value":value, "id":id}
+			data:{"value":value, "id":id, "push":push}
 		}).then(function successCallback(response){
 			debugger
 		}, function errorCallback(response){
@@ -20,7 +20,9 @@ app.controller("view", function($scope, $http, $state){
 					if ((inputs[i].type === "checkbox") && (inputs[i].checked === true )){
 						var value = inputs[i].value
 						var id = inputs[i].dataset.id
-						storeData(value, id)
+						var push = true
+						storeData(value, id, push)
+						//add another value so it will know to push it on
 
 					}
 					else if ((inputs[i].type === "radio")  && (inputs[i].checked === true)) {
@@ -77,8 +79,7 @@ app.controller("view", function($scope, $http, $state){
 							previewCreator(preview);
 						}
 					}
-				}
-				
+				}		
 			}
 
 		}, function errorCallback(reponse){

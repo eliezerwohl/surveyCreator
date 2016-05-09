@@ -2,6 +2,7 @@ var flash = require('connect-flash');
 var home = require("../server/controllers/homeController");
 var create = require("../server/controllers/createController");
 var view = require("../server/controllers/viewController");
+var mail = require("../server/controllers/mailController");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcryptjs");
@@ -64,9 +65,10 @@ module.exports = function(app) {
 	app.get("/", function(req, res) {
 		res.sendFile(process.cwd() + "/public/home.html")
 	});
+	app.post("/mail", mail.mail)
 	app.post("/signUp", home.signUp);
 	app.post("/newSurvey", home.newSurvey);
-	app.post("/storeData", create.storeData)
+	app.post("/storeData", create.storeData);
 	app.post('/login', function(req, res, next) {
 		passport.authenticate('login', function(err, user, info) {
 			if (err) {
