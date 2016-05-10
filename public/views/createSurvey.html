@@ -1,11 +1,13 @@
 <div ng-controller="create">	
+	<button ng-click="getCount()"> get count </button>
 	<button ng-click="view()"> View </button>
 	<h3> pick a question type </h3>
-	<button ng-click="inputType('input')">input </button>
-	<button ng-click="inputType('textarea')"> text area </button>
-	<button ng-click="inputType('radio')"> radio </button>
-	<button ng-click="inputType('checkbox')">  checkbox </button>
-	<div ng-show="selectedInput ==='input' || selectedInput ==='textarea'">
+	<button ng-click="inputCreator('input')">input </button>
+	<button ng-click="inputCreator('textarea')"> text area </button>
+	<button ng-click="inputCreator('radio')"> radio </button>
+	<button ng-click="inputCreator('checkbox')">  checkbox </button>
+	<div id="target"> </div>
+	<!-- <div ng-show="selectedInput ==='input' || selectedInput ==='textarea'">
 		<h3> Put your question here </h3>
 		<input ng-model="text"> 
 	</div>
@@ -22,7 +24,7 @@
 		<span id="options"></span>
 		<div ng-repeat="option in options">
 		{{option.text}}<input class="optionInput">
-		</div>
-	</div>
+		</div> -->
+<!-- 	</div> -->
 	<button ng-click="createQuestion()" ng-show="selectedInput != undefined"> Save </button>
 </div>

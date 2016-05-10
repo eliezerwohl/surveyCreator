@@ -7,14 +7,21 @@
 	<title>surveyCreator</title>
 </head>
 <body ng-app="app">
-herr
+	<div ng-controller="answer" ng-init="getSurvey()">
+		first hide and show form with email and name
+		<form>
 
-{{2+2}}
+		</form>
+
+		<form id="target">
+
+		</form>
+	</div>
 when page loads get put request TO view, get back questions
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
-
 <script src="/assets/javascript/app.js"></script>
+<script src="/assets/javascript/controllers/answer.js"></script>
 </body>
 
 </html>
