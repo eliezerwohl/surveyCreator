@@ -1,23 +1,16 @@
 
 	function test(id, type){
-		console.log(type)
-		var input="<div> mary sue </div>"
+		// data type and data name
+		var input="<div>option</div> <input data-type='" + type +"' data-name='" + id +"'>"
 	angular.element(document.getElementById(id))
 	.append(input)
 }
 
 app.controller('create', function($state, $scope, $rootScope, $http) {
-	$scope.test = function(){
-		alert("alert")
-	}
-	document.querySelector('body').addEventListener('click', function(event) {
-  if (event.target.tagName.toLowerCase() === 'li') {
-    alert(event.target.id);
-  }
-})
-
+	
 	$scope.getCount = function() {
 		var inputs = document.getElementsByTagName('input')
+
 
 		for (var i = 0; i < inputs.length; i++) {
 			if (inputs[i].dataset.type === "input") {
@@ -29,11 +22,21 @@ app.controller('create', function($state, $scope, $rootScope, $http) {
 					}
 				}
 
-			}else if (inputs[i].dataset.type === "radio"){
-
+			}else if ((inputs[i].dataset.type === "radio") || (inputs[i].dataset.type === "checkbox")){
+				var optionsArray = []
+				var k = 0
+				for (var j = 0; j < inputs.length; j++) {
+					k++
+					if ((inputs[i].dataset.name === inputs[j].dataset.name) && (inputs[j].dataset.type === "options")) {
+						optionsArray.push(inputs[j].value)
+					}
+				}
+				//when loop is done, can now send data to be stored
+				if (k === inputs.length){
+						console.log("the input is " + inputs[i].value+" it is a "+  inputs[i].dataset.type + " these are the options" +optionsArray)
+				}
 			}
 		}
-		console.log(inputs)
 	}
 $scope.count = 0
 
@@ -52,7 +55,7 @@ $scope.count = 0
 				.append(input)
 		} else if (type === "checkbox") {
 			var input = "<h3>what is your question</h3><input data-type='checkbox' data-name='" +
-				$scope.count + "'><button onclick='test(" + $scope.count +  ",`" + type + "`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
+				$scope.count + "'><button onclick='test(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
 				"<div id ='" + $scope.count + "'>"
 			var el = angular.element(input);
 			angular.element(document.getElementById('target'))
