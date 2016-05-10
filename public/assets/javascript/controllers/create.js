@@ -1,5 +1,6 @@
 
-	function test(id){
+	function test(id, type){
+		console.log(type)
 		var input="<div> mary sue </div>"
 	angular.element(document.getElementById(id))
 	.append(input)
@@ -51,12 +52,11 @@ $scope.count = 0
 				.append(input)
 		} else if (type === "checkbox") {
 			var input = "<h3>what is your question</h3><input data-type='checkbox' data-name='" +
-				$scope.count + "'><button onclick='test(" + $scope.count + ")'class='moreOptions(" + $scope.count + ")'> try </button>" +
+				$scope.count + "'><button onclick='test(" + $scope.count +  ",`" + type + "`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
 				"<div id ='" + $scope.count + "'>"
 			var el = angular.element(input);
 			angular.element(document.getElementById('target'))
 				.append(el)
-
 		}
 
 	}
