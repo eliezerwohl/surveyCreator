@@ -61,6 +61,14 @@ $scope.count = 0
 			angular.element(document.getElementById('target'))
 				.append(el)
 		}
+		else if (type ==="radio"){
+				var input = "<h3>what is your question</h3><input data-type='radio' data-name='" +
+				$scope.count + "'><button onclick='test(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
+				"<div id ='" + $scope.count + "'>"
+			var el = angular.element(input);
+			angular.element(document.getElementById('target'))
+				.append(el)
+		}
 
 	}
 	$scope.shareSurvey=function(){
