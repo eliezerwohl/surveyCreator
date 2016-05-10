@@ -8,17 +8,18 @@
 
 app.controller('create', function($state, $scope, $rootScope, $http) {
 	
-	$scope.getCount = function() {
+	$scope.save = function() {
 		var inputs = document.getElementsByTagName('input')
 
 
 		for (var i = 0; i < inputs.length; i++) {
 			if (inputs[i].dataset.type === "input") {
+				createQuestion(inputs[i].dataset.type, null, inputs[i].value , null)
 				console.log("this is an input, the value is" + inputs[i].value)
 			} else if (inputs[i].dataset.type === "textarea") {
 				for (var j = 0; j < inputs.length; j++) {
 					if ((inputs[i].dataset.name === inputs[j].dataset.name) && (inputs[j].dataset.type === "lines")) {
-						console.log("the input is " + inputs[i].value + "options are" + inputs[j].value)
+						createQuestion(inputs[i].dataset.type, inputs[j].value, inputs[i].value, null)
 					}
 				}
 
@@ -33,7 +34,7 @@ app.controller('create', function($state, $scope, $rootScope, $http) {
 				}
 				//when loop is done, can now send data to be stored
 				if (k === inputs.length){
-						console.log("the input is " + inputs[i].value+" it is a "+  inputs[i].dataset.type + " these are the options" +optionsArray)
+						createQuestion(inputs[i].dataset.type, null, inputs[i].value, optionsArray)
 				}
 			}
 		}
@@ -101,6 +102,25 @@ $scope.count = 0
 		var test ={"text":"option here"}
 		$scope.options.push(test)
 		console.log($scope.options)
+
+	}
+	function createQuestion(type, lines, text, options){
+		debugger
+		$http({
+				method: "POST",
+				url: "/createQuestion",
+				data: {
+					"type": type,
+					"lines": lines,
+					"text": text,
+					"options": options
+				}
+			}).then(function successCallback(response) {
+
+
+			}, function errorCallback(reponse) {
+
+			});
 
 	}
 	$scope.createQuestion = function() {
