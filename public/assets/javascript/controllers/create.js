@@ -1,9 +1,23 @@
-app.controller('create', function($state, $scope, $rootScope, $http) {
 
+	function test(id){
+		var input="<div> mary sue </div>"
+	angular.element(document.getElementById(id))
+	.append(input)
+}
+
+app.controller('create', function($state, $scope, $rootScope, $http) {
+	$scope.test = function(){
+		alert("alert")
+	}
+	document.querySelector('body').addEventListener('click', function(event) {
+  if (event.target.tagName.toLowerCase() === 'li') {
+    alert(event.target.id);
+  }
+})
 
 	$scope.getCount = function() {
-
 		var inputs = document.getElementsByTagName('input')
+
 		for (var i = 0; i < inputs.length; i++) {
 			if (inputs[i].dataset.type === "input") {
 				console.log("this is an input, the value is" + inputs[i].value)
@@ -11,31 +25,39 @@ app.controller('create', function($state, $scope, $rootScope, $http) {
 				for (var j = 0; j < inputs.length; j++) {
 					if ((inputs[i].dataset.name === inputs[j].dataset.name) && (inputs[j].dataset.type === "lines")) {
 						console.log("the input is " + inputs[i].value + "options are" + inputs[j].value)
-
-
 					}
 				}
+
+			}else if (inputs[i].dataset.type === "radio"){
 
 			}
 		}
 		console.log(inputs)
 	}
 $scope.count = 0
-	$scope.inputCreator = function(type){
-		$scope.count++
-		if (type === "input"){
-		var input = "<h3>what is your question</h3><input data-type='input' data-name='" + $scope.count +"'>"
-		angular.element(document.getElementById('target'))
-	.append(input)
-	}
 
-		else if (type ==="textarea"){
-			var input = "<h3>what is your question</h3><input data-type='textarea' data-name='" 
-			+ $scope.count +"'><h3>how many lines</h3><input data-type='lines' data-name='" 
-			+ $scope.count +"'>"
-								angular.element(document.getElementById('target'))
-	.append(input)
-					} 
+	$scope.inputCreator = function(type) {
+		$scope.count++
+			if (type === "input") {
+				var input = "<h3>what is your question</h3><input data-type='input' data-name='" + $scope.count + "'>"
+				angular.element(document.getElementById('target'))
+					.append(input)
+			} else
+		if (type === "textarea") {
+			var input = "<h3>what is your question</h3><input data-type='textarea' data-name='" +
+				$scope.count + "'><h3>how many lines</h3><input data-type='lines' data-name='" +
+				$scope.count + "'>"
+			angular.element(document.getElementById('target'))
+				.append(input)
+		} else if (type === "checkbox") {
+			var input = "<h3>what is your question</h3><input data-type='checkbox' data-name='" +
+				$scope.count + "'><button onclick='test(" + $scope.count + ")'class='moreOptions(" + $scope.count + ")'> try </button>" +
+				"<div id ='" + $scope.count + "'>"
+			var el = angular.element(input);
+			angular.element(document.getElementById('target'))
+				.append(el)
+
+		}
 
 	}
 	$scope.shareSurvey=function(){

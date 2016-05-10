@@ -26,5 +26,17 @@
 		{{option.text}}<input class="optionInput">
 		</div> -->
 <!-- 	</div> -->
+	<button onclick="test()"> </button>
+<script>
+test()
+function test(){
+	alert("it's alright")
+}
+document.querySelector('body').addEventListener('click', function(event) {
+  if (event.target.tagName.toLowerCase() === 'li') {
+    alert(event.target.id);
+  }
+  })
+</script>
 	<button ng-click="createQuestion()" ng-show="selectedInput != undefined"> Save </button>
 </div>
