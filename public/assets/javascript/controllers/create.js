@@ -1,5 +1,43 @@
 app.controller('create', function($state, $scope, $rootScope, $http) {
 
+
+	$scope.getCount = function() {
+
+		var inputs = document.getElementsByTagName('input')
+		for (var i = 0; i < inputs.length; i++) {
+			if (inputs[i].dataset.type === "input") {
+				console.log("this is an input, the value is" + inputs[i].value)
+			} else if (inputs[i].dataset.type === "textarea") {
+				for (var j = 0; j < inputs.length; j++) {
+					if ((inputs[i].dataset.name === inputs[j].dataset.name) && (inputs[j].dataset.type === "lines")) {
+						console.log("the input is " + inputs[i].value + "options are" + inputs[j].value)
+
+
+					}
+				}
+
+			}
+		}
+		console.log(inputs)
+	}
+$scope.count = 0
+	$scope.inputCreator = function(type){
+		$scope.count++
+		if (type === "input"){
+		var input = "<h3>what is your question</h3><input data-type='input' data-name='" + $scope.count +"'>"
+		angular.element(document.getElementById('target'))
+	.append(input)
+	}
+
+		else if (type ==="textarea"){
+			var input = "<h3>what is your question</h3><input data-type='textarea' data-name='" 
+			+ $scope.count +"'><h3>how many lines</h3><input data-type='lines' data-name='" 
+			+ $scope.count +"'>"
+								angular.element(document.getElementById('target'))
+	.append(input)
+					} 
+
+	}
 	$scope.shareSurvey=function(){
 		$http({
 				method: "GET",
