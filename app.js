@@ -4,7 +4,7 @@ var PORT = process.env.PORT || 8080;
 
 
 if (PORT === 8080){
-	global.var=true
+	global.var="true"
 		//save to cookie have
 		// res.send("cookie?")
 }
