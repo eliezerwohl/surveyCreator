@@ -3,10 +3,10 @@ var Survey = require("../models/survey");
 
 
 exports.shareSurvey = function(req, res){
-	debugger
 //hardcoded for now
-	var surveyId = "572f7dbac823801140e12e95"
+	var surveyId = req.session.survey
 	var local = global.var
+	debugger
 	var info = {"local":local, "surveyId": surveyId}
 	res.send(info)
 }
