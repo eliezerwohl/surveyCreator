@@ -42,9 +42,14 @@ app.controller('create', function($state, $scope, $rootScope, $http) {
 $scope.count = 0
 
 	$scope.inputCreator = function(type) {
+		var panelStart =  "<div class='panel panel-info'><div class='panel-body'>"
+		var panelEnd = "</div> </div>"
 		$scope.count++
 			if (type === "input") {
-				var input = "<h3>what is your question</h3><input data-type='input' data-name='" + $scope.count + "'>"
+				var input = panelStart 
+				+"<h3>what is your question</h3><input data-type='input' data-name='" 
+				+ $scope.count + "'>" 
+				+panelEnd
 				angular.element(document.getElementById('target'))
 					.append(input)
 			} else
