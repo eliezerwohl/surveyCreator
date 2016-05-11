@@ -47,30 +47,35 @@ $scope.count = 0
 		$scope.count++
 			if (type === "input") {
 				var input = panelStart 
-				+"<h3>what is your question</h3><input data-type='input' data-name='" 
+				+"<h4>what is your question</h4><input data-type='input' data-name='" 
 				+ $scope.count + "'>" 
 				+panelEnd
 				angular.element(document.getElementById('target'))
 					.append(input)
 			} else
 		if (type === "textarea") {
-			var input = "<h3>what is your question</h3><input data-type='textarea' data-name='" +
-				$scope.count + "'><h3>how many lines</h3><input data-type='lines' data-name='" +
-				$scope.count + "'>"
+			var input = panelStart
+			+"<h4>what is your question</h4><input data-type='textarea' data-name='"
+			+$scope.count + "'><h4>how many lines</h4><input data-type='lines' data-name='" 
+			+$scope.count + "'>" + panelEnd
 			angular.element(document.getElementById('target'))
 				.append(input)
 		} else if (type === "checkbox") {
-			var input = "<h3>what is your question</h3><input data-type='checkbox' data-name='" +
-				$scope.count + "'><button onclick='test(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
-				"<div id ='" + $scope.count + "'>"
+			var input = panelStart 
+			+"<h4>what is your question</h4><input data-type='checkbox' data-name='" 
+			+$scope.count + "'><button onclick='test(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
+				"<div id ='" + $scope.count + "'>" 
+				+panelEnd
 			var el = angular.element(input);
 			angular.element(document.getElementById('target'))
 				.append(el)
 		}
 		else if (type ==="radio"){
-				var input = "<h3>what is your question</h3><input data-type='radio' data-name='" +
+				var input = panelStart 
+				+ "<h4>what is your question</h4><input data-type='radio' data-name='" +
 				$scope.count + "'><button onclick='test(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
-				"<div id ='" + $scope.count + "'>"
+				"<div id ='" + $scope.count + "'>" 
+				+panelEnd
 			var el = angular.element(input);
 			angular.element(document.getElementById('target'))
 				.append(el)
