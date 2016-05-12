@@ -6,36 +6,4 @@
 	<button ng-click="inputCreator('radio')"> radio </button>
 	<button ng-click="inputCreator('checkbox')">  checkbox </button>
 	<div id="target"> </div>
-	<!-- <div ng-show="selectedInput ==='input' || selectedInput ==='textarea'">
-		<h3> Put your question here </h3>
-		<input ng-model="text"> 
-	</div>
-	<div ng-show="selectedInput ==='textarea'">
-		<h3> how many lines long </h3>
-		<input ng-model="lines">
-	</div>
-	<div ng-show="selectedInput ==='radio' || selectedInput === 'checkbox' ">
-		<h3> Put your question here </h3>
-		<input ng-model="text"> 
-		<button ng-click="addOption()"> Add options
-		</button>
-	<br>
-		<span id="options"></span>
-		<div ng-repeat="option in options">
-		{{option.text}}<input class="optionInput">
-		</div> -->
-<!-- 	</div> -->
-	<button onclick="test()"> </button>
-<script>
-test()
-function test(){
-	alert("it's alright")
-}
-document.querySelector('body').addEventListener('click', function(event) {
-  if (event.target.tagName.toLowerCase() === 'li') {
-    alert(event.target.id);
-  }
-  })
-</script>
-	<button ng-click="createQuestion()" ng-show="selectedInput != undefined"> Save </button>
 </div>

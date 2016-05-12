@@ -26,7 +26,6 @@ exports.location = function (req, res){
 	}
 exports.signUp = function (req, res){
 	User.findOne({email:req.body.email}, function(err, user){
-		debugger
 		if (err){
 			res.send("taken")
 		}
