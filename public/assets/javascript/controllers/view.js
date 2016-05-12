@@ -54,7 +54,7 @@ app.controller("view", function($scope, $http, $state){
 					previewCreator(preview);
 				}
 				else if(data[i].type === "textarea"){
-					var preview = "<h2>" + data[i].text + "</h2> <textarea rows='" + data[0] + "'>"
+					var preview = "<h2>" + data[i].text + "</h2> <textarea rows='" + data[i].lines + "'>"
 					previewCreator(preview) ;
 				}
 				else if(data[i].type === "radio"){
