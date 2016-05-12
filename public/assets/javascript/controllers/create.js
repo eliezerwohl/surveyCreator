@@ -9,9 +9,8 @@
 app.controller('create', function($state, $scope, $rootScope, $http) {
 	
 	$scope.save = function() {
+		$state.go("test")
 		var inputs = document.getElementsByTagName('input')
-
-
 		for (var i = 0; i < inputs.length; i++) {
 			if (inputs[i].dataset.type === "input") {
 				createQuestion(inputs[i].dataset.type, null, inputs[i].value , null)
@@ -87,9 +86,10 @@ $scope.count = 0
 				method: "GET",
 				url: "/shareSurvey",
 			}).then(function successCallback(response) {
-				if (response.data.local === true){
+				debugger
+				if (response.data.local === "true"){
 					//this is local
-					$scope.msg = "Go to http://localhost:8080/viewSurvey/" + response.data.surveyId
+					$scope.msg = "Go to localhost:8080/viewSurvey/" + response.data.surveyId
 				}
 				else {
 					//for production

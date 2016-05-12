@@ -1,5 +1,20 @@
 app.controller("home", function($scope, $http, $state){
 
+	$scope.location = function(){
+		$http({
+			method:"GET",
+			url:"/location"
+		}).then(function successCallback(response){
+			if (response.data != ""){
+				alert("got to a diff state")
+			}
+			debugger
+		}, function errorCallback(response){
+			debugger
+		});
+
+	}
+
 	$scope.newSurvey=function(){
 		console.log("new survey")
 		$http({

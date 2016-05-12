@@ -21,6 +21,9 @@ exports.newSurvey = function(req, res){
 		}
 	});
 }
+exports.location = function (req, res){
+	res.send(req.session.fillSurvey)
+	}
 exports.signUp = function (req, res){
 	User.findOne({email:req.body.email}, function(err, user){
 		debugger
