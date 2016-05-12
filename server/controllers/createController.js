@@ -1,6 +1,6 @@
 var Question = require("../models/question");
 var Survey = require("../models/survey");
-
+var Answer = require("../models/answer");
 
 exports.shareSurvey = function(req, res){
 //hardcoded for now
@@ -11,10 +11,25 @@ exports.shareSurvey = function(req, res){
 	res.send(info)
 }
 exports.storeData = function(req, res){
+	var newAnswer = new Answer({
+		question:req.body.id,
+		answer:req.body.value
+
+	});
+
+	newAnswer.save(function(err, doc){
+		debugger
+		if (err){
+			console.log (err)
+		}
+		else{
+			res.send(doc)
+		}
+	})
 	//create new answer, put the question 
 	//find the question, push answer into array
 
-	debugger
+
 }
 exports.createQuestion=function(req, res){
 	debugger

@@ -1,10 +1,11 @@
 app.controller("view", function($scope, $http, $state){
 
 	function storeData(value, id){
+		debugger
 	$http({
 			method:"POST",
 			url:"/storeData",
-			data:{"value":value, "id":id, "push":push}
+			data:{"value":value, "id":id}
 		}).then(function successCallback(response){
 			
 		}, function errorCallback(response){
@@ -23,8 +24,8 @@ app.controller("view", function($scope, $http, $state){
 		var textarea = document.getElementsByTagName('textarea');
 		//need seperate loop, text area doesn't count as an input
 			for (var i = 0; i < textarea.length; i++) {
-						var value = inputs[i].value
-						var id = inputs[i].dataset.id
+						var value = textarea[i].value
+						var id = textarea[i].dataset.id
 						var push = false
 						console.log("this is a textarea" +value + id + push)
 						storeData(value, id)
@@ -44,15 +45,16 @@ app.controller("view", function($scope, $http, $state){
 						
 								if ((inputs[j].type === "checkbox") && (inputs[i].dataset.id === inputs[j].dataset.id) && (inputs[j].checked === true )){
 										valueArray.push(inputs[j].value)
-										debugger
-									
 						
 										
 								}
 
 							}
 						if ( k === inputs.length){
-							storeData(value, id)
+							var value = valueArray
+							var id = inputs[i].dataset.id
+							storeData(value, id) 
+							
 						}
 					
 						// var id = inputs[i].dataset.id
@@ -72,9 +74,10 @@ app.controller("view", function($scope, $http, $state){
 					}
 					//if it's just an input
 						else if (inputs[i].dataset.type === "input") {
+							
 						var value = inputs[i].value
 						var id = inputs[i].dataset.id
-						console.log("this is single" +value + id + push)
+						storeData(value, id)
 					}
 			}
 	}
