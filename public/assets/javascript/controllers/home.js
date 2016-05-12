@@ -6,7 +6,7 @@ app.controller("home", function($scope, $http, $state){
 			url:"/location"
 		}).then(function successCallback(response){
 			if (response.data != ""){
-				alert("got to a diff state")
+				$state.go("previewSurvey")
 			}
 			debugger
 		}, function errorCallback(response){
