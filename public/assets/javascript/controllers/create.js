@@ -108,19 +108,6 @@ $scope.count = 0
 		console.log(input)
 	}
 	$scope.options = []
-
-	// $scope.newSurvey = function(){
-	// 		$http({
-	// 			method: "POST",
-	// 			url: "/newSurvey",
-	// 			}).then(function successCallback(response) {
-
-
-	// 		}, function errorCallback(reponse) {
-
-	// 		});
-
-	// }
 	$scope.addOption = function(){
 		var test ={"text":"option here"}
 		$scope.options.push(test)

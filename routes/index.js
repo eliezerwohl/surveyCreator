@@ -70,14 +70,14 @@ module.exports = function(app) {
 	app.get("/view", view.viewSurvey);
 	app.get("/viewSurvey/:surveyId", function(req, res){
 		req.session.fillSurvey = req.params.surveyId
-			res.sendFile(process.cwd() + "/public/survey.html" )
+			res.redirect("/")
 		// res.send(req.params.surveyId)
 	})
 
 	app.get("/", function(req, res) {
 		res.sendFile(process.cwd() + "/public/home.html")
 	});
-
+	app.get("/location", home.location)
 	app.get("/shareSurvey", create.shareSurvey)
 	app.post("/mail", mail.mail)
 	app.post("/signUp", home.signUp);
