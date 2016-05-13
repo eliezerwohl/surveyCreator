@@ -1,18 +1,39 @@
 app.controller("view", function($scope, $http, $state){
 
+
 	function storeData(value, id){
-		debugger
 	$http({
 			method:"POST",
 			url:"/storeData",
 			data:{"value":value, "id":id}
 		}).then(function successCallback(response){
+
 			
 		}, function errorCallback(response){
 			
 		});
 	}
-
+	$scope.viewAllQuestions = function(){
+		$http({
+			method:"GET",
+			url:"/viewAllQuestions"
+		}).then(function successCallback(response){
+					$scope.data = response.data
+		}, function errorCallback(response){
+			
+		});
+	}
+	$scope.goTo = function(id){
+		$http({
+			method:"POST",
+			url:"/goTo",
+			data:{"id":id}
+		}).then(function successCallback(response){
+					$state.go("viewAllQuestions")
+		}, function errorCallback(response){
+			
+		});
+	}
 	$scope.test = function(){
 
 		var inputs = document.getElementsByTagName('input');
@@ -139,7 +160,7 @@ app.controller("view", function($scope, $http, $state){
 			method:"GET",
 			url:"/viewAllSurveys"
 		}).then(function successCallback(response){
-			debugger
+			$scope.data = response.data
 			
 		}, function errorCallback(response){
 			

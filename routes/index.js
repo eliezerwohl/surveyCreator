@@ -64,6 +64,10 @@ module.exports = function(app) {
 	passport.deserializeUser(function(user, done) {
 		done(null, user);
 	});
+
+	app.get("/viewAllQuestions", view.viewAllQuestions)
+
+	app.post("/goTo", view.goTo)
 	app.get("/viewAllSurveys", view.viewAllSurveys)
 	app.post("/createQuestion", create.createQuestion);
 	app.get("/previewSurvey", view.previewSurvey);
