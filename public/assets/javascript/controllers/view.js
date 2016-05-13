@@ -134,5 +134,16 @@ app.controller("view", function($scope, $http, $state){
 
 		});
 	}
+	$scope.viewAllSurveys = function(){
+		$http({
+			method:"GET",
+			url:"/viewAllSurveys"
+		}).then(function successCallback(response){
+			debugger
+			
+		}, function errorCallback(response){
+			
+		});
+	}
 
 })//end of controller
