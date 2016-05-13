@@ -1,7 +1,16 @@
 var Question = require("../models/question");
+var Survey = require("../models/survey");
 
 exports.viewAllSurveys = function(req, res){
-	debugger
+	Survey.find({"_user":req.session.user._id})
+	.exec(function(err, docs){
+		if (err){
+			console.log(err)
+		}
+		else{
+			res.send(docs)
+		}
+	})
 }
 exports.viewSurvey = function(req, res){
 	req.session.fillSurvey
