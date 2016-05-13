@@ -1,8 +1,9 @@
 var Question = require("../models/question");
 
-
-exports.viewSurvey = function(req, res){
+exports.viewAllSurveys = function(req, res){
 	debugger
+}
+exports.viewSurvey = function(req, res){
 	req.session.fillSurvey
 		//hard coding survey number so I can figure out how to render it, will
 	//put req.session.whatever in later
