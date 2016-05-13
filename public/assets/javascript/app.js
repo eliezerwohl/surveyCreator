@@ -8,6 +8,10 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/index',
       templateUrl: '../views/index.html'
     })
+    .state('viewAllSurveys', {
+      url: '/viewAllSurveys',
+      templateUrl: '../views/viewAllSurveys.html'
+    })
     .state('previewSurvey', {
       url: '/previewSurvey',
       templateUrl: '../views/previewSurvey.html'

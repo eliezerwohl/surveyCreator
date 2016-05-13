@@ -1,5 +1,8 @@
 app.controller("home", function($scope, $http, $state){
 
+	$scope.goOlder = function(){
+		$state.go("viewAllSurveys")
+	}
 	$scope.location = function(){
 		$http({
 			method:"GET",
