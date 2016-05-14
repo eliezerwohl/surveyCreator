@@ -130,7 +130,7 @@ app.controller("view", function($scope, $http, $state){
 					var preview = "<h2>" + data[i].text + "</h2>";
 					for (var j = 0;  j < length; j++){
 						
-						preview += "<input type = 'radio' value='" + data[i].options[j] + "'name='"  + data[i]._id + "'>" + data[i].options[j]
+						preview += "<input type = 'radio' value='" + data[i].options[j] + "'data-id='"  + data[i]._id + "'>" + data[i].options[j]
 						//minus 1 because j start at zero
 						if (j === length - 1){
 							previewCreator(preview);
