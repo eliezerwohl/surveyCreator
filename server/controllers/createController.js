@@ -6,7 +6,7 @@ exports.shareSurvey = function(req, res){
 //hardcoded for now
 	var surveyId = req.session.survey
 	var local = global.var
-	debugger
+	
 	var info = {"local":local, "surveyId": surveyId}
 	res.send(info)
 }
@@ -14,25 +14,42 @@ exports.storeData = function(req, res){
 	var newAnswer = new Answer({
 		question:req.body.id,
 		answer:req.body.value
-
 	});
 
 	newAnswer.save(function(err, doc){
-		debugger
+	
 		if (err){
 			console.log (err)
 		}
 		else{
-			res.send(doc)
+			debugger
+			var questionId= req.body.id
+			var answerId = doc._doc._id
+
+			Question.findByIdAndUpdate(questionId, {
+				$push: {
+					"_answer": answerId
+				}
+			}, {
+				safe: true,
+				upsert: true
+			}, function(err, model) {
+				if (err){
+					res.send(err)
+				}
+				else{
+					res.send(model)
+				}
+			});
 		}
-	})
+	});
 	//create new answer, put the question 
 	//find the question, push answer into array
 
 
 }
 exports.createQuestion=function(req, res){
-	debugger
+	
 	var newQuestion = new Question({
 		"text": req.body.text,
 		"type": req.body.type,
@@ -44,7 +61,7 @@ exports.createQuestion=function(req, res){
 		if (err) {
 			console.log(err)
 		} else {
-			debugger
+			
 			var surveyId = req.session.survey
 			Survey.findByIdAndUpdate(surveyId, {
 				$push: {
@@ -54,7 +71,7 @@ exports.createQuestion=function(req, res){
 				safe: true,
 				upsert: true
 			}, function(err, model) {
-				debugger
+				
 				console.log("it worked?")
 			})
 			res.send(doc)

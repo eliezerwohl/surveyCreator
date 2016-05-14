@@ -12,7 +12,7 @@ var QuestionSchema = new Schema({
 	options:[],
 	//if radio or checkbox
 	_answer:[{type:Schema.Types.ObjectId,
-						ref:"answer"}]
+						ref:"Answer"}]
 });
 
 var Question = mongoose.model("Question", QuestionSchema);

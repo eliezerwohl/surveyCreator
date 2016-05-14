@@ -1,18 +1,39 @@
 app.controller("view", function($scope, $http, $state){
 
+
 	function storeData(value, id){
-		debugger
 	$http({
 			method:"POST",
 			url:"/storeData",
 			data:{"value":value, "id":id}
 		}).then(function successCallback(response){
+
 			
 		}, function errorCallback(response){
 			
 		});
 	}
-
+	$scope.viewAllQuestions = function(){
+		$http({
+			method:"GET",
+			url:"/viewAllQuestions"
+		}).then(function successCallback(response){
+					$scope.data = response.data
+		}, function errorCallback(response){
+			
+		});
+	}
+	$scope.goTo = function(id){
+		$http({
+			method:"POST",
+			url:"/goTo",
+			data:{"id":id}
+		}).then(function successCallback(response){
+					$state.go("viewAllQuestions")
+		}, function errorCallback(response){
+			
+		});
+	}
 	$scope.test = function(){
 
 		var inputs = document.getElementsByTagName('input');
@@ -109,7 +130,7 @@ app.controller("view", function($scope, $http, $state){
 					var preview = "<h2>" + data[i].text + "</h2>";
 					for (var j = 0;  j < length; j++){
 						
-						preview += "<input type = 'radio' value='" + data[i].options[j] + "'name='"  + data[i]._id + "'>" + data[i].options[j]
+						preview += "<input type = 'radio' value='" + data[i].options[j] + "'data-id='"  + data[i]._id + "'>" + data[i].options[j]
 						//minus 1 because j start at zero
 						if (j === length - 1){
 							previewCreator(preview);
@@ -139,7 +160,7 @@ app.controller("view", function($scope, $http, $state){
 			method:"GET",
 			url:"/viewAllSurveys"
 		}).then(function successCallback(response){
-			debugger
+			$scope.data = response.data
 			
 		}, function errorCallback(response){
 			

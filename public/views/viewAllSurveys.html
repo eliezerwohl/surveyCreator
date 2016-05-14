@@ -1,4 +1,6 @@
 <div ng-controller="view" ng-init="viewAllSurveys()">
-
+ <div ng-repeat="data in data">
+ <button ng-click="goTo(data._id)"> {{data._id}}
+ </div>
 
 </div>
