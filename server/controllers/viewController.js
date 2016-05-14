@@ -3,7 +3,9 @@ var Survey = require("../models/survey");
 
 exports.viewAllQuestions = function(req, res){
 	Question.find({"_survey":req.session.surveyId})
+	.populate("_answer")
 	.exec(function(err, docs){
+		debugger
 		if (err){
 			res.send(err)
 		}
