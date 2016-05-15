@@ -9,7 +9,7 @@ var AnswerSchema = new Schema({
 	//the person who answered
 	email:String,
 	//in array in case of mutiple answers
-	answer:String
+	answer:[]
 });
 
 var Answer = mongoose.model("Answer", AnswerSchema);
