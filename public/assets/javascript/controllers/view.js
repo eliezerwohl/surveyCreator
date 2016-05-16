@@ -15,43 +15,53 @@ app.controller("view", function($scope, $http, $state){
 	}
 
 
-	$scope.viewAllQuestions = function() {
-		$http({
-			method: "GET",
-			url: "/viewAllQuestions"
-		}).then(function successCallback(response) {
+	
+$scope.viewAllQuestions = function() {
+	$http({
+		method: "GET",
+		url: "/viewAllQuestions"
+	}).then(function successCallback(response) {
 
-			for (var i = 0; i < response.data.length; i++) {
-				if (response.data[i].type === "checkbox") {
-					var counter = 0;
-					var totalOptions = response.data[i].options.length
-					var totalAnswers = response.data[i]._answer.length
-					var allNum = []
+		for (var i = 0; i < response.data.length; i++) {
+			if (response.data[i].type === "checkbox") {
+				var totalOptions = response.data[i].options.length
+				var totalAnswers = response.data[i]._answer.length
+				var allNum = []
+				var optionArray = []
 
-					function getAll() {
-						console.log("all the answered number for this are " + allNum.length)
+
+				function getAll() {
+					function calcThis() {
+						console.log(thisOption + "appears" + match / allNum.length)
 					}
-					//for each options
-					for (var j = 0; j < totalOptions || getAll(); j++) {
-						for (var k = 0; k < totalAnswers; k++) {
-							counter++
+					console.log("all the answered number for this are " + allNum.length)
 
-							//going over all the responses
-							for (var l = 0; l < response.data[i]._answer[k].answer.length; l++) {
-								//each response in a response
-								if (response.data[i].options[j] === response.data[i]._answer[k].answer[l]) {
-									allNum.push(response.data[i]._answer[k].answer[l])
-								}
+					// then get each option
+					// for loop that, with the array 
+					for (var m = 0; m < response.data[i].options.length; m++) {
+						var thisOption = response.data[i].options[m]
+						debugger
+						console.log(thisOption)
+						var match = 0
+						for (var n = 0; n < allNum.length || calcThis(); n++) {
+							if (allNum[n] === thisOption) {
+								match++
 							}
 						}
 					}
 				}
+				for (var k = 0; k < totalAnswers || getAll(); k++) {
+					for (var l = 0; l < response.data[i]._answer[k].answer.length; l++) {
+						allNum.push(response.data[i]._answer[k].answer[l])
+					}
+				}
 			}
-			$scope.data = response.data
-		}, function errorCallback(response) {
+		}
+		$scope.data = response.data
+	}, function errorCallback(response) {
 
-		});
-	}
+	});
+}
 	$scope.goTo = function(id){
 		$http({
 			method:"POST",
