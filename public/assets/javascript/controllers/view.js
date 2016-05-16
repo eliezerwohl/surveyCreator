@@ -18,6 +18,32 @@ app.controller("view", function($scope, $http, $state){
 			method:"GET",
 			url:"/viewAllQuestions"
 		}).then(function successCallback(response){
+	
+			for (var i = 0; i < response.data.length; i++) {
+				if (response.data[i].type === "checkbox"){
+
+					var totalOptions = response.data[i].options.length
+					var totalAnswers = response.data[i]._answer.length
+					
+					//for each options
+					for (var j = 0; j < totalOptions; j++) {
+						var thisNum = 0
+					for (var k = 0; k < totalAnswers; k++) {
+
+						//going over all the responses
+						for (var l = 0; l < response.data[i]._answer[k].answer.length; l++) {
+							debugger
+							//each response in a response
+							if (response.data[i].options[j] === response.data[i]._answer[k].answer[l]){
+								console.log("a match")
+						}
+						}
+
+					}
+					}
+					
+				}
+			}
 					$scope.data = response.data
 		}, function errorCallback(response){
 			
@@ -108,10 +134,12 @@ app.controller("view", function($scope, $http, $state){
 
 	}
 	$scope.previewSurvey = function(){
+		debugger
 		$http({
 			method:"GET",
 			url:"/previewSurvey"
 		}).then(function successCallback(response){
+			debugger
 			var data = response.data
 			
 			for (var i = 0; i < data.length; i++) {

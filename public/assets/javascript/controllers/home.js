@@ -9,9 +9,9 @@ app.controller("home", function($scope, $http, $state){
 			url:"/location"
 		}).then(function successCallback(response){
 			if (response.data != ""){
+				debugger
 				$state.go("previewSurvey")
 			}
-			debugger
 		}, function errorCallback(response){
 			debugger
 		});
