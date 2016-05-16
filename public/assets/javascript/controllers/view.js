@@ -13,40 +13,43 @@ app.controller("view", function($scope, $http, $state){
 			
 		});
 	}
-	$scope.viewAllQuestions = function(){
-		$http({
-			method:"GET",
-			url:"/viewAllQuestions"
-		}).then(function successCallback(response){
-	
-			for (var i = 0; i < response.data.length; i++) {
-				if (response.data[i].type === "checkbox"){
 
+
+	$scope.viewAllQuestions = function() {
+		$http({
+			method: "GET",
+			url: "/viewAllQuestions"
+		}).then(function successCallback(response) {
+
+			for (var i = 0; i < response.data.length; i++) {
+				if (response.data[i].type === "checkbox") {
+					var counter = 0;
 					var totalOptions = response.data[i].options.length
 					var totalAnswers = response.data[i]._answer.length
-					
+					var allNum = []
+
+					function getAll() {
+						console.log("all the answered number for this are " + allNum.length)
+					}
 					//for each options
-					for (var j = 0; j < totalOptions; j++) {
-						var thisNum = 0
-					for (var k = 0; k < totalAnswers; k++) {
+					for (var j = 0; j < totalOptions || getAll(); j++) {
+						for (var k = 0; k < totalAnswers; k++) {
+							counter++
 
-						//going over all the responses
-						for (var l = 0; l < response.data[i]._answer[k].answer.length; l++) {
-							debugger
-							//each response in a response
-							if (response.data[i].options[j] === response.data[i]._answer[k].answer[l]){
-								console.log("a match")
+							//going over all the responses
+							for (var l = 0; l < response.data[i]._answer[k].answer.length; l++) {
+								//each response in a response
+								if (response.data[i].options[j] === response.data[i]._answer[k].answer[l]) {
+									allNum.push(response.data[i]._answer[k].answer[l])
+								}
+							}
 						}
-						}
-
 					}
-					}
-					
 				}
 			}
-					$scope.data = response.data
-		}, function errorCallback(response){
-			
+			$scope.data = response.data
+		}, function errorCallback(response) {
+
 		});
 	}
 	$scope.goTo = function(id){
