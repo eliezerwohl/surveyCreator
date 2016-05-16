@@ -16,50 +16,47 @@ app.controller("view", function($scope, $http, $state){
 
 
 	
+
 $scope.viewAllQuestions = function() {
 	$http({
 		method: "GET",
 		url: "/viewAllQuestions"
 	}).then(function successCallback(response) {
-
-		for (var i = 0; i < response.data.length; i++) {	
-			
-			if (response.data[i].type === "checkbox") {
-				debugger
-				var question = "<p>the question is " + response.data[i].text + "</p>"
-				previewCreator(question)
-				var totalOptions = response.data[i].options.length
-				var totalAnswers = response.data[i]._answer.length
-				var allNum = []
-				var optionArray = []
-
-
-				function getAll() {
-					function calcThis() {
-						var answer = "<p> " + thisOption + "appears" 
-						+ Math.ceil((match / allNum.length) * 100) + "%</p>"
-						previewCreator(answer)
-					}
-					console.log("all the answered number for this are " + allNum.length)
-
-					// then get each option
-					// for loop that, with the array 
-					for (var m = 0; m < response.data[i].options.length; m++) {
-						var thisOption = response.data[i].options[m]
-						debugger
-						console.log(thisOption)
-						var match = 0
-						for (var n = 0; n < allNum.length || calcThis(); n++) {
-							if (allNum[n] === thisOption) {
-								match++
-							}
+		for (var i = 0; i < response.data.length; i++) {
+			var question = "<p>the question is " + response.data[i].text + "</p>"
+			previewCreator(question)
+			var allNum = []
+			var optionArray = []
+			function getAll() {
+				function calcThis() {
+					var answer = "<p> " + thisOption + "appears" +
+						Math.ceil((match / allNum.length) * 100) + "%</p>"
+					previewCreator(answer)
+				}
+				console.log("all the answered number for this are " + allNum.length)
+				// then get each option
+				// for loop that, with the array 
+				for (var m = 0; m < response.data[i].options.length; m++) {
+					var thisOption = response.data[i].options[m]
+					var match = 0
+					for (var n = 0; n < allNum.length || calcThis(); n++) {
+						if (allNum[n] === thisOption) {
+							match++
 						}
 					}
 				}
+			}
+			if (response.data[i].type === "checkbox") {
+				var totalOptions = response.data[i].options.length
+				var totalAnswers = response.data[i]._answer.length
 				for (var k = 0; k < totalAnswers || getAll(); k++) {
 					for (var l = 0; l < response.data[i]._answer[k].answer.length; l++) {
 						allNum.push(response.data[i]._answer[k].answer[l])
 					}
+				}
+			} else if (response.data[i].type === "radio") {
+				for (var k = 0; k < response.data[i].options.length || getAll(); k++) {
+					allNum.push(response.data[i]._answer[k].answer[0])
 				}
 			}
 		}
@@ -153,12 +150,12 @@ $scope.viewAllQuestions = function() {
 
 	}
 	$scope.previewSurvey = function(){
-		debugger
+		
 		$http({
 			method:"GET",
 			url:"/previewSurvey"
 		}).then(function successCallback(response){
-			debugger
+			
 			var data = response.data
 			
 			for (var i = 0; i < data.length; i++) {
