@@ -22,8 +22,12 @@ $scope.viewAllQuestions = function() {
 		url: "/viewAllQuestions"
 	}).then(function successCallback(response) {
 
-		for (var i = 0; i < response.data.length; i++) {
+		for (var i = 0; i < response.data.length; i++) {	
+			
 			if (response.data[i].type === "checkbox") {
+				debugger
+				var question = "<p>the question is " + response.data[i].text + "</p>"
+				previewCreator(question)
 				var totalOptions = response.data[i].options.length
 				var totalAnswers = response.data[i]._answer.length
 				var allNum = []
@@ -32,7 +36,9 @@ $scope.viewAllQuestions = function() {
 
 				function getAll() {
 					function calcThis() {
-						console.log(thisOption + "appears" + match / allNum.length)
+						var answer = "<p> " + thisOption + "appears" 
+						+ Math.ceil((match / allNum.length) * 100) + "%</p>"
+						previewCreator(answer)
 					}
 					console.log("all the answered number for this are " + allNum.length)
 
