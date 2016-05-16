@@ -27,24 +27,51 @@ app.controller("view", function($scope, $http, $state){
 					var totalOptions = response.data[i].options.length
 					var totalAnswers = response.data[i]._answer.length
 					var allNum = []
+					var optionArray = []
+
 
 					function getAll() {
+						function getThis(){
+						debugger
+						console.log(thisOption + "appears" + match / allNum.length )
+					}
+						
 						console.log("all the answered number for this are " + allNum.length)
+				
+						// then get each option
+						// for loop that, with the array 
+						for (var m = 0; m < response.data[i].options.length; m++) {
+							var thisOption = response.data[i].options[m]
+							debugger
+							console.log(thisOption)
+							var match = 0
+							for (var n = 0; n < allNum.length || getThis(); n++) {
+								if (allNum[n] === thisOption){
+									match++
+								}
+							}
+						}
+
+						// response.data[i].options[j] === allNum[i]
+						// counter++
+						// after for loop
+
 					}
 					//for each options
-					for (var j = 0; j < totalOptions || getAll(); j++) {
-						for (var k = 0; k < totalAnswers; k++) {
+					// for (var j = 0; j < totalOptions || getAll(); j++) {
+					// 	optionArray.push(response.data[i].options[j])
+						for (var k = 0; k < totalAnswers || getAll(); k++) {
 							counter++
 
 							//going over all the responses
 							for (var l = 0; l < response.data[i]._answer[k].answer.length; l++) {
 								//each response in a response
-								if (response.data[i].options[j] === response.data[i]._answer[k].answer[l]) {
+								// if (response.data[i].options[j] === response.data[i]._answer[k].answer[l]) {
 									allNum.push(response.data[i]._answer[k].answer[l])
-								}
+								// }
 							}
 						}
-					}
+					// }
 				}
 			}
 			$scope.data = response.data
