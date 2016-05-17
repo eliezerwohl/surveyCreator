@@ -31,12 +31,21 @@ $scope.viewAllQuestions = function() {
 			var question = "<p>the question is " + response.data[i].text + "</p>"
 			previewCreator(question)
 			var allNum = []
+			var total = 0
 			var optionArray = []
 			function getAll() {
 				function calcThis() {
-					var answer = "<p> " + thisOption + "appears" +
-						Math.ceil((match / allNum.length) * 100) + "%</p>"
-					previewCreator(answer)
+					if (m === response.data[i].options.length - 1){
+						var answer = "<p>  " + thisOption + "appears" 
+						+ (100 - total) + "%</p>"
+						previewCreator(answer)					
+					}
+					else{
+						var answer = "<p> " + thisOption + "appears" +
+						Math.round((match / allNum.length) * 100) + "%</p>"
+						previewCreator(answer)
+						total += Math.round((match / allNum.length) * 100) 
+					}
 				}
 				console.log("all the answered number for this are " + allNum.length)
 				// then get each option
