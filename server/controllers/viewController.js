@@ -1,6 +1,10 @@
 var Question = require("../models/question");
 var Survey = require("../models/survey");
 
+exports.viewInputAnswers = function(req, res){
+	debugger
+}
+
 exports.viewAllQuestions = function(req, res){
 	Question.find({"_survey":req.session.surveyId})
 	.populate("_answer")

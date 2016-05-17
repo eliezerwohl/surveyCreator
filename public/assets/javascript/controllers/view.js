@@ -1,3 +1,24 @@
+function viewInputAnswers(){
+	var xhttp, xmlDoc, txt, x, i;
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+  if (xhttp.readyState == 4 && xhttp.status == 200) {
+  	
+    xmlDoc = xhttp.responseText;
+    console.log(xmlDoc)
+    // txt = "";
+    // x = xmlDoc.getElementsByTagName("ARTIST");
+    // for (i = 0; i < x.length; i++) {
+    //   txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+    // }
+    // document.getElementById("demo").innerHTML = txt;
+    }
+  };
+  xhttp.open("POST", "/viewInputAnswers", true);
+  xhttp.send();
+
+}
+
 app.controller("view", function($scope, $http, $state){
 
 
@@ -54,10 +75,15 @@ $scope.viewAllQuestions = function() {
 						allNum.push(response.data[i]._answer[k].answer[l])
 					}
 				}
-			} else if (response.data[i].type === "radio") {
+			} 
+			else if (response.data[i].type === "radio") {
 				for (var k = 0; k < response.data[i].options.length || getAll(); k++) {
 					allNum.push(response.data[i]._answer[k].answer[0])
 				}
+			}
+			else if ((response.data[i].type==="input") || (response.data[i].type==="textarea")){
+				var button = "<button onclick='viewInputAnswers()'>See all responses  </button>"
+				previewCreator(button)
 			}
 		}
 		$scope.data = response.data
@@ -77,7 +103,6 @@ $scope.viewAllQuestions = function() {
 		});
 	}
 	$scope.test = function(){
-
 		var inputs = document.getElementsByTagName('input');
 				function callback(number){
 					inputs.splice(number, 1)
