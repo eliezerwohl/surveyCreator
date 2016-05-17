@@ -66,7 +66,7 @@ module.exports = function(app) {
 	});
 
 	app.get("/viewAllQuestions", view.viewAllQuestions)
-
+	app.post("/viewInputAnswers", view.viewInputAnswers)
 	app.post("/goTo", view.goTo)
 	app.get("/viewAllSurveys", view.viewAllSurveys)
 	app.post("/createQuestion", create.createQuestion);
