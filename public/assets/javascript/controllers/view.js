@@ -1,22 +1,6 @@
-function viewInputAnswers(){
-	var xhttp, xmlDoc, txt, x, i;
-  xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-  if (xhttp.readyState == 4 && xhttp.status == 200) {
-  	
-    xmlDoc = xhttp.responseText;
-    console.log(xmlDoc)
-    // txt = "";
-    // x = xmlDoc.getElementsByTagName("ARTIST");
-    // for (i = 0; i < x.length; i++) {
-    //   txt = txt + x[i].childNodes[0].nodeValue + "<br>";
-    // }
-    // document.getElementById("demo").innerHTML = txt;
-    }
-  };
-  xhttp.open("POST", "/viewInputAnswers", true);
-  xhttp.send();
-
+function viewInputAnswers(id){
+	var id = id
+	document.cookie = "store=" + id 
 }
 
 app.controller("view", function($scope, $http, $state){
@@ -82,7 +66,8 @@ $scope.viewAllQuestions = function() {
 				}
 			}
 			else if ((response.data[i].type==="input") || (response.data[i].type==="textarea")){
-				var button = "<button onclick='viewInputAnswers()'>See all responses  </button>"
+			var id = response.data[i]._id
+				var button = "<button onclick='viewInputAnswers(`" +id +"`)'>See all responses  </button>"
 				previewCreator(button)
 			}
 		}
