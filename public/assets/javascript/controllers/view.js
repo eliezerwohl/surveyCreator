@@ -170,15 +170,16 @@ $scope.viewAllQuestions = function() {
 
 	}
 	$scope.previewSurvey = function(){
-		
+
 		$http({
 			method:"GET",
 			url:"/previewSurvey"
 		}).then(function successCallback(response){
 			
 			var data = response.data
-			
+			var number = 0
 			for (var i = 0; i < data.length; i++) {
+				number++
 				if(data[i].type === "input"){
 					var preview = "<h2>" + data[i].text + "</h2> <input data-id='" 
 					+ data[i]._id + "'data-type='input'>"
@@ -194,7 +195,7 @@ $scope.viewAllQuestions = function() {
 					var preview = "<h2>" + data[i].text + "</h2>";
 					for (var j = 0;  j < length; j++){
 						
-						preview += "<input type = 'radio' value='" + data[i].options[j] + "'data-id='"  + data[i]._id + "'>" + data[i].options[j]
+						preview += "<input name ='" + number +"'type = 'radio' value='" + data[i].options[j] + "'data-id='"  + data[i]._id + "'>" + data[i].options[j]
 						//minus 1 because j start at zero
 						if (j === length - 1){
 							previewCreator(preview);
