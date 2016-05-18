@@ -1,6 +1,7 @@
 function viewInputAnswers(id){
 	var id = id
 	document.cookie = "store=" + id 
+	window.location.hash ="/index"
 }
 
 app.controller("view", function($scope, $http, $state){
