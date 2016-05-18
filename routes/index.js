@@ -81,6 +81,7 @@ module.exports = function(app) {
 	app.get("/", function(req, res) {
 		res.sendFile(process.cwd() + "/public/home.html")
 	});
+	app.post("/viewAnswersByQuestion", view.viewAnswersByQuestion)
 	app.get("/location", home.location)
 	app.get("/shareSurvey", create.shareSurvey)
 	app.post("/mail", mail.mail)

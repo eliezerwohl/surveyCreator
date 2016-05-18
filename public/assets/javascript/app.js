@@ -1,4 +1,4 @@
-var app = angular.module('app', ["ui.bootstrap", 'ui.router']);
+var app = angular.module('app', ["ui.bootstrap", 'ui.router', "ngCookies"]);
 
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/index')
@@ -15,6 +15,10 @@ app.config(function($stateProvider, $urlRouterProvider){
     .state('viewAllQuestions', {
       url: '/viewAllQuestions',
       templateUrl: '../views/viewAllQuestions.html'
+    })
+     .state('viewAnswersByQuestion', {
+      url: '/viewAnswersByQuestion',
+      templateUrl: '../views/viewAnswersByQuestion.html'
     })
     .state('previewSurvey', {
       url: '/previewSurvey',
