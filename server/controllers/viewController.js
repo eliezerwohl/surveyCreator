@@ -1,10 +1,24 @@
 var Question = require("../models/question");
 var Survey = require("../models/survey");
+var Answer = require("../models/answer");
 
 exports.viewInputAnswers = function(req, res){
 	debugger
 }
 
+exports.viewAnswersByQuestion = function(req, res){
+	debugger
+	Answer.find({"_question":req.body.id})
+	.exec(function(err, docs){
+		if (err){
+			res.send(err)
+		}
+		else{
+			res.send(docs)
+		}
+	})
+
+}
 exports.viewAllQuestions = function(req, res){
 	Question.find({"_survey":req.session.surveyId})
 	.populate("_answer")
