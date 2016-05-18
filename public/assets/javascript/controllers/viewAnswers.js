@@ -7,7 +7,13 @@ $http({
 			url:"/viewAnswersByQuestion",
 			data:{"id":cookie}
 		}).then(function successCallback(response){
-			debugger
+			$scope.data = []
+			for (var i = 0; i < response.data.length; i++) {
+				debugger
+				response.data[1].answer[0]
+				$scope.data.push(response.data[i].answer[0])
+			}
+			
 
 			
 		}, function errorCallback(response){
