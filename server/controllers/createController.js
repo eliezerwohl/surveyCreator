@@ -12,7 +12,7 @@ exports.shareSurvey = function(req, res){
 }
 exports.storeData = function(req, res){
 	var newAnswer = new Answer({
-		question:req.body.id,
+		_question:req.body.id,
 		answer:req.body.value
 	});
 
