@@ -55,7 +55,8 @@ exports.createQuestion=function(req, res){
 		"type": req.body.type,
 		"_survey": req.session.survey,
 		"lines": req.body.lines,
-		"options":req.body.options
+		"options":req.body.options,
+		"randomId":req.body.randomId
 	});
 	newQuestion.save(function(err, doc) {
 		if (err) {

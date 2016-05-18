@@ -2,6 +2,9 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var QuestionSchema = new Schema({
+	//id is so can you view all teh answers from a user
+	//without indentifying the user
+	randomId:String,
 	_survey: {
 		type:Schema.Types.ObjectId,
 		ref: "Survey"
