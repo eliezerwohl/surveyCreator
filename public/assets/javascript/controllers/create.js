@@ -76,7 +76,8 @@ $scope.count = 0
 			var input = panelStart
 			+"<h4>what is your question</h4><input data-type='textarea' data-name='"
 			+$scope.count + "'><h4>how many lines</h4><input data-type='lines' data-name='" 
-			+$scope.count + "'>" + panelEnd
+			+$scope.count + "'>" 
+			+ "<button onclick='removeIt(`"+ $scope.count +"`)'> delete </button>" + panelEnd
 			angular.element(document.getElementById('target'))
 				.append(input)
 		} else if (type === "checkbox") {
