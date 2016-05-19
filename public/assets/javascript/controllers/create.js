@@ -1,5 +1,20 @@
+// function removeIt(class){
+// 	
+// 		 var all = document.getElementsByClassName(class);
+// 		 for (var i = 0; i < all.length; i++){
+// 		 	all[i].remove()
+// 		 }
+// 	}
 
-	function test(id, type){
+	function removeIt(removeClass){
+		debugger
+		var all = document.getElementsByClassName(removeClass);
+		 for (var i = 0; i < all.length; i++){
+		 	all[i].remove()
+		 }
+	}
+	function addOptions(id, type){
+		
 		// data type and data name
 		var input="<div>option</div> <input data-type='" + type +"' data-name='" + id +"'>"
 	angular.element(document.getElementById(id))
@@ -10,7 +25,7 @@ app.controller('create', function($state, $scope, $rootScope, $http) {
 	
 	$scope.save = function() {
 		$state.go("test")
-		debugger
+		
 		console.log($scope.newId)
 		
 		var inputs = document.getElementsByTagName('input')
@@ -44,17 +59,19 @@ app.controller('create', function($state, $scope, $rootScope, $http) {
 $scope.count = 0
 
 	$scope.inputCreator = function(type) {
-		var panelStart =  "<div class='panel panel-info'><div class='panel-body'>"
+				$scope.count++
+		var panelStart =  "<div class=' "+ $scope.count + " panel panel-info'><div class='panel-body'>"
 		var panelEnd = "</div> </div>"
-		$scope.count++
+
 			if (type === "input") {
 				var input = panelStart 
 				+"<h4>what is your question</h4><input data-type='input' data-name='" 
 				+ $scope.count + "'>" 
-				+panelEnd
+				+ "<button onclick='removeIt(`"+ $scope.count +"`)'> delete </button>" + panelEnd
 				angular.element(document.getElementById('target'))
 					.append(input)
-			} else
+			} 
+			else
 		if (type === "textarea") {
 			var input = panelStart
 			+"<h4>what is your question</h4><input data-type='textarea' data-name='"
@@ -65,7 +82,7 @@ $scope.count = 0
 		} else if (type === "checkbox") {
 			var input = panelStart 
 			+"<h4>what is your question</h4><input data-type='checkbox' data-name='" 
-			+$scope.count + "'><button onclick='test(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
+			+$scope.count + "'><button onclick='addOptions(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
 				"<div id ='" + $scope.count + "'>" 
 				+panelEnd
 			var el = angular.element(input);
@@ -75,7 +92,7 @@ $scope.count = 0
 		else if (type ==="radio"){
 				var input = panelStart 
 				+ "<h4>what is your question</h4><input data-type='radio' data-name='" +
-				$scope.count + "'><button onclick='test(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
+				$scope.count + "'><button onclick='addOptions(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
 				"<div id ='" + $scope.count + "'>" 
 				+panelEnd
 			var el = angular.element(input);
@@ -89,7 +106,7 @@ $scope.count = 0
 				method: "GET",
 				url: "/shareSurvey",
 			}).then(function successCallback(response) {
-				debugger
+				
 				if (response.data.local === "true"){
 					//this is local
 					$scope.msg = "Go to localhost:8080/viewSurvey/" + response.data.surveyId
@@ -119,7 +136,7 @@ $scope.count = 0
 	}
 
 	function createQuestion(type, lines, text, options){
-		debugger
+		
 		$http({
 				method: "POST",
 				url: "/createQuestion",
