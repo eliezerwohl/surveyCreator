@@ -1,20 +1,11 @@
 # surveyCreator
 
 For my first post graduation project, I'm trying to make a site where a user can create
-surveys, similiar to Google Forms.
+surveys, similiar to Google Forms.  There are currently 4 different choices of inputs.  Stretch goals include automatic and manual pagination, custom form validation, and progress bar.
 
 #Front End
-Angular, Bootstrap
+Angular, Bootstrap, as much vanilla Javascript as possible.
 
 #Back End
-MEAN Stack
+Express, Angular, Node.
 
-each survey has
-question array
-
-each question
-has type
-options (for radio and checkbox)
-
-
-the page will render and append eachone, having the data-type of each being the id of each question
