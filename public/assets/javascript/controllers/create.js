@@ -83,7 +83,8 @@ $scope.count = 0
 		} else if (type === "checkbox") {
 			var input = panelStart 
 			+"<h4>what is your question</h4><input data-type='checkbox' data-name='" 
-			+$scope.count + "'><button onclick='addOptions(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
+			+$scope.count + "'>"
+			+ "<button onclick='removeIt(`"+ $scope.count +"`)'> delete </button>" +"<button onclick='addOptions(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> addOptions </button>" +
 				"<div id ='" + $scope.count + "'>" 
 				+panelEnd
 			var el = angular.element(input);
@@ -93,7 +94,8 @@ $scope.count = 0
 		else if (type ==="radio"){
 				var input = panelStart 
 				+ "<h4>what is your question</h4><input data-type='radio' data-name='" +
-				$scope.count + "'><button onclick='addOptions(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> try </button>" +
+				$scope.count + "'>"
+				+ "<button onclick='removeIt(`"+ $scope.count +"`)'> delete </button>" + "<button onclick='addOptions(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> addOptions </button>" +
 				"<div id ='" + $scope.count + "'>" 
 				+panelEnd
 			var el = angular.element(input);
