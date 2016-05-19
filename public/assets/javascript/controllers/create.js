@@ -13,10 +13,20 @@
 		 	all[i].remove()
 		 }
 	}
+	function removeOption(removeClass){
+		var removing = "option"+removeClass;
+		debugger
+		var all = document.getElementsByClassName(removing);
+		 for (var i = 0; i < all.length; i++){
+		 	all[i].remove()
+		 }
+	}
+	var optionCount = 0
 	function addOptions(id, type){
+		optionCount++
 		
 		// data type and data name
-		var input="<div>option</div> <input data-type='" + type +"' data-name='" + id +"'>"
+		var input="<div class='option" + optionCount + "'><div>option <div> <input data-type='" + type +"' data-name='" + id +"'><button onclick='removeOption(`"+ optionCount + "`)'> Delete option </button></div>"
 	angular.element(document.getElementById(id))
 	.append(input)
 }
