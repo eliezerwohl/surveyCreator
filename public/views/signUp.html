@@ -1,10 +1,20 @@
 <div ng-controller="home">
-	<form ng-submit="signUp()">
-		<input ng-model="firstName">First Name
-		<input ng-model="lastName">Last Name
-		<input type="email" ng-model="email">Email
-		<input type="password" ng-model="password">Password
-		<button type="submit" > Submit
-		</button>
-	</form>
+	<div class="jumbotron">
+		<h2>This is our sign up page.  No email, phone number, or SSN required.  The longest thing about signing up is reading this jumbotron.</h2>
+	</div>
+	<div class="panel panel-info col-md-4 col-md-offset-4">
+		<div class="panel-body">
+			<form ng-submit="signUp()">
+
+				<h4 class="text-center">User Name </h4>
+				<input class="col-md-12" ng-model="email">
+				{{msg}}
+				<h4 class="text-center"> Password </h4>
+				<input class="col-md-12" type="password" ng-model="password">
+				<button class="btn btn-md btn-info col-md-12" type="submit" > Submit
+				</button>
+			</form>
+		</div>
+	</div>
+
 </div>
