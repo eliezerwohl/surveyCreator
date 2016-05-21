@@ -1,4 +1,4 @@
-app.controller("home", function($scope, $http, $state){
+app.controller("home", function($scope, $http, $rootScope, $state){
 
 	$scope.goOlder = function(){
 		$state.go("viewAllSurveys")
@@ -56,8 +56,17 @@ app.controller("home", function($scope, $http, $state){
 						"email":$scope.email,
 						"password":$scope.password}
 		}).then(function successCallback(response){
+			if(response.data==="taken"){
+				$scope.msg ="I'm sorry, that username is already taken.  Try another?"
+			}
+			else{
+				debugger
+				$rootScope.msg="You've signed up!  Now sign in!"
+				$state.go("index")
+			}
 
 		}, function errorCallback(reponse){
+			debugger
 
 		});
 	}

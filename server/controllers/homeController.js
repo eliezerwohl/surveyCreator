@@ -25,26 +25,47 @@ exports.location = function (req, res){
 	res.send(req.session.fillSurvey)
 	}
 exports.signUp = function (req, res){
-	User.findOne({email:req.body.email}, function(err, user){
-		if (err){
+	User.findOne({"username":req.body.email}).exec(function(err, result){
+		if(result != null){
 			res.send("taken")
 		}
-		else if(user){
-			console.log(user)
-		}
 		else{
-			var newUser = new User({"firstName":req.body.firstName,
-														"lastName":req.body.lastName,
-														"username":req.body.email,
+			var newUser = new User({"username":req.body.email,
 														"password":saltyhash(req.body.password)});
 			newUser.save(function (err, doc) {
 				if (err){
 					console.log(err)
 				}
 				else{
+					debugger
 					res.send(doc)
 				}
 			});
 		}
-	});
+	})
+
+	// }) function(err, user, result){
+	// 	debugger
+	// 	if (err){
+	// 		res.send("taken")
+	// 	}
+	// 	else if(user){
+	// 		debugger
+	// 		res.send("taken")
+	// 	}
+	// 	else{
+	// 		var newUser = new User({"firstName":req.body.firstName,
+	// 													"lastName":req.body.lastName,
+	// 													"username":req.body.email,
+	// 													"password":saltyhash(req.body.password)});
+	// 		newUser.save(function (err, doc) {
+	// 			if (err){
+	// 				console.log(err)
+	// 			}
+	// 			else{
+	// 				res.send(doc)
+	// 			}
+	// 		});
+	// 	}
+	// });
 }
