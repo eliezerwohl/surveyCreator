@@ -61,7 +61,7 @@ app.controller("home", function($scope, $http, $rootScope, $state){
 			}
 			else{
 				debugger
-				$rootScope.msg="You've signed up!  Now sign in!"
+				$rootScope.msg="You've signed up, now sign in..."
 				$state.go("index")
 			}
 
