@@ -1,9 +1,20 @@
 <div ng-controller="create" ng-init="idCreator()">	
-	<button ng-click="save()"> save </button>
-	<h3> pick a question type </h3>
-	<button ng-click="inputCreator('input')">input </button>
-	<button ng-click="inputCreator('textarea')"> text area </button>
-	<button ng-click="inputCreator('radio')"> radio </button>
-	<button ng-click="inputCreator('checkbox')">  checkbox </button>
-	<div id="target"> </div>
+	<div class="col-md-4 panel panel-primary">
+		<div class="panel-body">
+			<h3> Survey Name</h3>
+			<input class="col-md-12">
+		</div>
+	</div>
+	<div class="col-md-4 panel panel-primary">
+		<div class="panel-body">
+			<h3> Add a Question Type </h3>
+			<button class="btn btn-md btn-default"ng-click="inputCreator('input')">input </button>
+			<button class="btn btn-md btn-default" ng-click="inputCreator('textarea')"> text area </button>
+			<button class="btn btn-md btn-default"ng-click="inputCreator('radio')"> radio </button>
+			<button class="btn btn-md btn-default"ng-click="inputCreator('checkbox')">  checkbox </button>
+		</div>
+	</div>
+		<button class=" col-md-4 btn btn-lg btn-success" ng-click="save()"> save </button>
+		<div class="col-md-12"id="target"> </div>
+	
 </div>
