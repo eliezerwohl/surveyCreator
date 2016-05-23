@@ -1,10 +1,3 @@
-// function removeIt(class){
-// 	
-// 		 var all = document.getElementsByClassName(class);
-// 		 for (var i = 0; i < all.length; i++){
-// 		 	all[i].remove()
-// 		 }
-// 	}
 
 	function removeIt(removeClass){
 		debugger
@@ -31,39 +24,44 @@
 }
 
 app.controller('create', function($state, $scope, $rootScope, $http) {
-	
-	$scope.save = function() {
-		$state.go("test")
-		
-		console.log($scope.newId)
-		
-		var inputs = document.getElementsByTagName('input')
-		for (var i = 0; i < inputs.length; i++) {
-			if (inputs[i].dataset.type === "input") {
-				createQuestion(inputs[i].dataset.type, null, inputs[i].value , null)
-				console.log("this is an input, the value is" + inputs[i].value)
-			} else if (inputs[i].dataset.type === "textarea") {
-				for (var j = 0; j < inputs.length; j++) {
-					if ((inputs[i].dataset.name === inputs[j].dataset.name) && (inputs[j].dataset.type === "lines")) {
-						createQuestion(inputs[i].dataset.type, inputs[j].value, inputs[i].value, null)
-					}
-				}
 
-			}else if ((inputs[i].dataset.type === "radio") || (inputs[i].dataset.type === "checkbox")){
-				var optionsArray = []
-				var k = 0
-				for (var j = 0; j < inputs.length; j++) {
-					k++
-					if ((inputs[i].dataset.name === inputs[j].dataset.name) && (inputs[j].dataset.type === "options")) {
-						optionsArray.push(inputs[j].value)
+	$scope.save = function() {
+		$http({
+			method: "POST",
+			url: "/newSurvey",
+			data:{"name":$scope.name}
+		}).then(function successCallback(response) {
+			$state.go("test")
+			var inputs = document.getElementsByTagName('input')
+			for (var i = 0; i < inputs.length; i++) {
+				if (inputs[i].dataset.type === "input") {
+					createQuestion(inputs[i].dataset.type, null, inputs[i].value, null)
+					console.log("this is an input, the value is" + inputs[i].value)
+				} else if (inputs[i].dataset.type === "textarea") {
+					for (var j = 0; j < inputs.length; j++) {
+						if ((inputs[i].dataset.name === inputs[j].dataset.name) && (inputs[j].dataset.type === "lines")) {
+							createQuestion(inputs[i].dataset.type, inputs[j].value, inputs[i].value, null)
+						}
 					}
-				}
-				//when loop is done, can now send data to be stored
-				if (k === inputs.length){
+
+				} else if ((inputs[i].dataset.type === "radio") || (inputs[i].dataset.type === "checkbox")) {
+					var optionsArray = []
+					var k = 0
+					for (var j = 0; j < inputs.length; j++) {
+						k++
+						if ((inputs[i].dataset.name === inputs[j].dataset.name) && (inputs[j].dataset.type === "options")) {
+							optionsArray.push(inputs[j].value)
+						}
+					}
+					//when loop is done, can now send data to be stored
+					if (k === inputs.length) {
 						createQuestion(inputs[i].dataset.type, null, inputs[i].value, optionsArray)
+					}
 				}
 			}
-		}
+		}, function errorCallback(response) {
+
+		});
 	}
 $scope.count = 0
 

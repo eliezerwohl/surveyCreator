@@ -19,15 +19,7 @@ app.controller("home", function($scope, $http, $rootScope, $state){
 	}
 
 	$scope.newSurvey=function(){
-		console.log("new survey")
-		$http({
-			method:"POST",
-			url:"/newSurvey"
-		}).then(function successCallback(response){
-			$state.go("createSurvey")
-		}, function errorCallback(response){
-			debugger
-		});
+		$state.go("createSurvey")
 	}
 
 	$scope.login=function(){
