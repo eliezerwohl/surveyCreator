@@ -26,10 +26,12 @@
 app.controller('create', function($state, $scope, $rootScope, $http) {
 
 	$scope.save = function() {
+		debugger
+		console.log($scope.newId)
 		$http({
 			method: "POST",
 			url: "/newSurvey",
-			data:{"name":$scope.name}
+			data:{"name":$scope.name, "id":$scope.newId }
 		}).then(function successCallback(response) {
 			$state.go("test")
 			var inputs = document.getElementsByTagName('input')
