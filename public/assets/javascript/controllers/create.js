@@ -72,7 +72,7 @@ $scope.count = 0
 
 			if (type === "input") {
 				var input = panelStart 
-				+"<h4>what is your question</h4><input data-type='input' data-name='" 
+				+"<h4 class='col-md-4'>what is your question</h4><input class='customInput col-md-8'data-type='input' data-name='" 
 				+ $scope.count + "'>" 
 			 + panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Input </button>"
 				angular.element(document.getElementById('target'))
@@ -82,7 +82,7 @@ $scope.count = 0
 		if (type === "textarea") {
 			var input = panelStart
 			+"<h4>what is your question</h4><input data-type='textarea' data-name='"
-			+$scope.count + "'><h4>how many lines</h4><input data-type='lines' data-name='" 
+			+$scope.count + "'><h4>how many lines</h4><input class='' data-type='lines' data-name='" 
 			+$scope.count + "'>" 
 			+ panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Textarea </button>"
 			angular.element(document.getElementById('target'))

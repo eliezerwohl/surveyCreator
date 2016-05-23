@@ -15,3 +15,7 @@ body {
 .surveyName{
 	margin-top:9px 
 }
+
+.customInput{
+	height: 35px;
+}
