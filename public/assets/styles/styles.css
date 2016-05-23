@@ -2,3 +2,16 @@
 body {
     background-color: lightblue;
 }
+
+.customPanel{
+	padding-bottom: 3px;
+}
+.saveButton{
+	font-size:4em;
+	padding-top: 16px;
+	padding-bottom:16px;
+}
+
+.surveyName{
+	margin-top:9px 
+}
