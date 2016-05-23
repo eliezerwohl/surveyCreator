@@ -9,7 +9,7 @@ function saltyhash(pass) {
 }
 exports.newSurvey = function(req, res){
 	//create new survey, put user id in it req.session.user._id
-	var newSurvey = new Survey({"_user":req.session.user._id, "name":req.body.name});
+	var newSurvey = new Survey({"_user":req.session.user._id, "name":req.body.name, "randomId":req.body.id});
 	newSurvey.save(function (err, doc) {
 		if (err){
 			console.log(err)

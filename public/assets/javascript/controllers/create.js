@@ -26,10 +26,12 @@
 app.controller('create', function($state, $scope, $rootScope, $http) {
 
 	$scope.save = function() {
+		debugger
+		console.log($scope.newId)
 		$http({
 			method: "POST",
 			url: "/newSurvey",
-			data:{"name":$scope.name}
+			data:{"name":$scope.name, "id":$scope.newId }
 		}).then(function successCallback(response) {
 			$state.go("test")
 			var inputs = document.getElementsByTagName('input')
@@ -67,12 +69,12 @@ $scope.count = 0
 
 	$scope.inputCreator = function(type) {
 				$scope.count++
-		var panelStart =  "<div class='col-md-8 "+ $scope.count + " panel panel-info'><div class='panel-body'>"
+		var panelStart =  "<div class='createPanel col-md-8 "+ $scope.count + " panel panel-info'><div class='createPanelBody panel-body'>"
 		var panelEnd = "</div> </div>"
 
 			if (type === "input") {
 				var input = panelStart 
-				+"<h4>what is your question</h4><input data-type='input' data-name='" 
+				+"<h4 class='customH4 col-md-4'>what is your question</h4><input class='customInput col-md-8' data-type='input' data-name='" 
 				+ $scope.count + "'>" 
 			 + panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Input </button>"
 				angular.element(document.getElementById('target'))
@@ -81,8 +83,8 @@ $scope.count = 0
 			else
 		if (type === "textarea") {
 			var input = panelStart
-			+"<h4>what is your question</h4><input data-type='textarea' data-name='"
-			+$scope.count + "'><h4>how many lines</h4><input data-type='lines' data-name='" 
+			+"<h4 class='customH4 col-md-4'>what is your question</h4><input class='customInput col-md-8' data-type='textarea' data-name='"
+			+$scope.count + "'><br><h4 class='col-md-4'>how many lines</h4><input class='customInput col-md-8' data-type='lines' data-name='" 
 			+$scope.count + "'>" 
 			+ panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Textarea </button>"
 			angular.element(document.getElementById('target'))

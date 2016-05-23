@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var SurveySchema= new Schema({
+	randomId:String,
 	name:String,
 	date:{type:Date, Default:Date.now},
 	_user: {
