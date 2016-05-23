@@ -26,14 +26,12 @@
 app.controller('create', function($state, $scope, $rootScope, $http) {
 
 	$scope.save = function() {
-		debugger
-		console.log($scope.newId)
 		$http({
 			method: "POST",
 			url: "/newSurvey",
 			data:{"name":$scope.name, "id":$scope.newId }
 		}).then(function successCallback(response) {
-			$state.go("test")
+			$state.go("share")
 			var inputs = document.getElementsByTagName('input')
 			for (var i = 0; i < inputs.length; i++) {
 				if (inputs[i].dataset.type === "input") {
@@ -121,11 +119,11 @@ $scope.count = 0
 				
 				if (response.data.local === "true"){
 					//this is local
-					$scope.msg = "Go to localhost:8080/viewSurvey/" + response.data.surveyId
+					$scope.msg = "localhost:8080/viewSurvey/" + response.data.surveyId
 				}
 				else {
 					//for production
-					$scope.msg = "Go to name.herokuapp.com/viewSurvey/" + response.data.surveyId
+					$scope.msg = "name.herokuapp.com/viewSurvey/" + response.data.surveyId
 				}
 		
 			})
