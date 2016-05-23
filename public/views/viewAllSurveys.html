@@ -1,15 +1,17 @@
 <div ng-controller="view" ng-init="viewAllSurveys()">
 	<table class="table">
 		<tr>
-			<th> it this </td>
+			<th> GO! </td>
 			<th> Name </td>
 			<th> Date </td>
+			<th> Delete </th>
 		</tr>
 
  <tr ng-repeat="data in data">
  	<td> <button ng-click="goTo(data._id)"> View Results </button> </td>
- <td> {{data.name}} <td>
+ 	<td> {{data.name}} </td>
  	<td>{{data.date | date:'short'}}  </td>
+ 	<td> <button> delete button goes here </button>
  </tr>
 
 
