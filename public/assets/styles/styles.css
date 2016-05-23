@@ -19,3 +19,15 @@ body {
 .customInput{
 	height: 35px;
 }
+
+.customH4{
+	margin-bottom: 8px
+}
+
+.createPanelBody{
+	padding-bottom:10px ;
+	padding-top: 10px
+}
+.createPanel{
+	margin-bottom: 10px;
+}
