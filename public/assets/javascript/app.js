@@ -28,6 +28,10 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/signUp',
       templateUrl: '../views/signUp.html'
     })
+    .state('share', {
+      url: '/share',
+      templateUrl: '../views/share.html'
+    })
     .state('loggedIn', {
       url: '/loggedIn',
       templateUrl: '../views/loggedIn.html'
