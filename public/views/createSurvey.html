@@ -1,10 +1,11 @@
 <div ng-controller="create" ng-init="idCreator()">	
-	<div class="col-md-4 panel panel-primary">
-		<div class="panel-body">
-			<h2 class="text-center surveyName"> Survey Name</h2>
-			<input ng-model="name" class="col-md-12">
+	<div class="col-md-12">
+		<div class="col-md-4 panel panel-primary">
+			<div class="panel-body">
+				<h2 class="text-center surveyName"> Survey Name</h2>
+				<input ng-model="name" class="col-md-12">
+			</div>
 		</div>
-	</div>
 	<div class="col-md-4 panel panel-primary">
 		<div class="panel-body customPanel">
 			<h2 class=" surveyName text-center"> Add a Question Type </h2>
@@ -15,6 +16,7 @@
 		</div>
 	</div>
 		<button class="saveButton col-md-4 btn btn-lg btn-success" ng-click="save()"> Save </button>
+	</div>
 		<div class="col-md-12"id="target"> </div>
 	
 </div>

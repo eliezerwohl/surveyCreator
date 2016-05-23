@@ -1,9 +1,9 @@
 
 	function removeIt(removeClass){
-		debugger
 		var all = document.getElementsByClassName(removeClass);
-		 for (var i = 0; i < all.length; i++){
-		 	all[i].remove()
+		//it's all.lenght +1 because it keeps not working because the array get too short
+		 for (var i = 0; i < all.length + 1; i++){
+		 	all[0].remove()
 		 }
 	}
 	function removeOption(removeClass){
@@ -67,14 +67,14 @@ $scope.count = 0
 
 	$scope.inputCreator = function(type) {
 				$scope.count++
-		var panelStart =  "<div class=' "+ $scope.count + " panel panel-info'><div class='panel-body'>"
+		var panelStart =  "<div class='col-md-8 "+ $scope.count + " panel panel-info'><div class='panel-body'>"
 		var panelEnd = "</div> </div>"
 
 			if (type === "input") {
 				var input = panelStart 
 				+"<h4>what is your question</h4><input data-type='input' data-name='" 
 				+ $scope.count + "'>" 
-				+ "<button onclick='removeIt(`"+ $scope.count +"`)'> delete </button>" + panelEnd
+			 + panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Input </button>"
 				angular.element(document.getElementById('target'))
 					.append(input)
 			} 
@@ -84,7 +84,7 @@ $scope.count = 0
 			+"<h4>what is your question</h4><input data-type='textarea' data-name='"
 			+$scope.count + "'><h4>how many lines</h4><input data-type='lines' data-name='" 
 			+$scope.count + "'>" 
-			+ "<button onclick='removeIt(`"+ $scope.count +"`)'> delete </button>" + panelEnd
+			+ panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Textarea </button>"
 			angular.element(document.getElementById('target'))
 				.append(input)
 		} else if (type === "checkbox") {
@@ -92,8 +92,8 @@ $scope.count = 0
 			+"<h4>what is your question</h4><input data-type='checkbox' data-name='" 
 			+$scope.count + "'>"
 			+ "<button onclick='removeIt(`"+ $scope.count +"`)'> delete </button>" +"<button onclick='addOptions(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> addOptions </button>" +
-				"<div id ='" + $scope.count + "'>" 
-				+panelEnd
+			"<div id ='" + $scope.count + "'></div>" 
+			+ panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Checkbox</button>"
 			var el = angular.element(input);
 			angular.element(document.getElementById('target'))
 				.append(el)
@@ -103,8 +103,8 @@ $scope.count = 0
 				+ "<h4>what is your question</h4><input data-type='radio' data-name='" +
 				$scope.count + "'>"
 				+ "<button onclick='removeIt(`"+ $scope.count +"`)'> delete </button>" + "<button onclick='addOptions(" + $scope.count +  ",`options`)'class='moreOptions(" + $scope.count + ")'> addOptions </button>" +
-				"<div id ='" + $scope.count + "'>" 
-				+panelEnd
+				"<div id ='" + $scope.count + "'></div>" 
+				+ panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Radio </button>"
 			var el = angular.element(input);
 			angular.element(document.getElementById('target'))
 				.append(el)
