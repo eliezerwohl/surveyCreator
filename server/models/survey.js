@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var SurveySchema= new Schema({
 	randomId:String,
 	name:String,
-	date:{type:Date, Default:Date.now},
+	date:{type:Date, default:Date.now},
 	_user: {
 		type:Schema.Types.ObjectId,
 		ref: "User"
