@@ -22,7 +22,18 @@ app.controller("view", function($scope, $http, $state){
 
 
 	
-
+	$scope.deleteSurvey = function(id){
+		alert(id)
+		$http({
+			method:"POST",
+			url:"/deleteSurveyData",
+			data:{"id":id}
+		}).then(function successCallback(response){
+			$state.go('deleteConfirm')
+		}, function errorCallback(response){
+			
+		});
+	}
 $scope.viewAllQuestions = function() {
 	$http({
 		method: "GET",
