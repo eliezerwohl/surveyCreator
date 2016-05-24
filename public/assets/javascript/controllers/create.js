@@ -91,9 +91,9 @@ $scope.count = 0
 			var input = panelStart 
 			+"<h4 class='customH4 col-md-4'>what is your question</h4><input class='customInput col-md-8' data-type='checkbox' data-name='" 
 			+$scope.count + "'>"
-			+"<div id ='" + $scope.count + "'></div>" 
-			+"<button class='btn btn-default btn-sm col-md-4' onclick='addOptions(" + $scope.count +  ",`options`)'> Add Options </button>" 
 			
+			+"<button class='btn btn-default btn-sm col-md-4' onclick='addOptions(" + $scope.count +  ",`options`)'> Add Options </button>" 
+			+"<div class='col-md-8 col-md-offset-4' id ='" + $scope.count + "'></div>" 
 			+ panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Checkbox</button>"
 			var el = angular.element(input);
 			angular.element(document.getElementById('target'))
@@ -103,9 +103,9 @@ $scope.count = 0
 				var input = panelStart 
 				+ "<h4 class='customH4 col-md-4'>what is your question</h4><input class='customInput col-md-8' data-type='radio' data-name='" +
 				$scope.count + "'>"
-				+"<div id ='" + $scope.count + "'></div>" 
+				
 			  +"<button class='btn btn-default btn-sm col-md-4' onclick='addOptions(" + $scope.count +  ",`options`)'> Add Options </button>" 
-			
+				+"<div class='col-md-8 col-md-offset-4' id ='" + $scope.count + "'></div>" 
 				+ panelEnd 	+ "<button class='btn btn-lg btn-primary col-md-4 "+  $scope.count +"' onclick='removeIt(`"+ $scope.count +"`)'> Delete This Radio </button>"
 			var el = angular.element(input);
 			angular.element(document.getElementById('target'))
