@@ -66,7 +66,8 @@ module.exports = function(app) {
 		done(null, user);
 	});
 
-	app.post("deleteSurveyData", deleteController.deleteSurveyData)
+	app.get("/deleteSurvey", deleteController.deleteSurvey)
+	app.post("/deleteSurveyData", deleteController.deleteSurveyData)
 	app.get("/viewAllQuestions", view.viewAllQuestions)
 	app.post("/viewInputAnswers", view.viewInputAnswers)
 	app.post("/goTo", view.goTo)
