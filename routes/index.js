@@ -3,6 +3,7 @@ var home = require("../server/controllers/homeController");
 var create = require("../server/controllers/createController");
 var view = require("../server/controllers/viewController");
 var mail = require("../server/controllers/mailController");
+var deleteController = require("../server/controllers/deleteController");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcryptjs");
@@ -65,6 +66,7 @@ module.exports = function(app) {
 		done(null, user);
 	});
 
+	app.post("deleteSurveyData", deleteController.deleteSurveyData)
 	app.get("/viewAllQuestions", view.viewAllQuestions)
 	app.post("/viewInputAnswers", view.viewInputAnswers)
 	app.post("/goTo", view.goTo)
