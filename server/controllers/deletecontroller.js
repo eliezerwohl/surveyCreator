@@ -1,3 +1,5 @@
+var Survey = require("../models/survey");
+
 
 exports.deleteSurveyData = function(req, res){
 	req.session.deleteId = req.body.id
@@ -5,6 +7,14 @@ exports.deleteSurveyData = function(req, res){
 }
 exports.deleteSurvey = function(req, res){
 // .remove
-	debugger
+	Survey.remove({ _id: req.session.deleteId }, function(err, docs) {
+    if (err) {
+    	res.send('error')
+           
+    }
+    else {
+    	res.send("deleted");
+    }
+});
 
 }
