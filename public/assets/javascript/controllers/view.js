@@ -23,7 +23,6 @@ app.controller("view", function($scope, $http, $state){
 
 	
 	$scope.deleteSurvey = function(id){
-		alert(id)
 		$http({
 			method:"POST",
 			url:"/deleteSurveyData",
