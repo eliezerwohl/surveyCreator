@@ -10,7 +10,7 @@ var SurveySchema= new Schema({
 		ref: "User"
 	},
 	_question:[{type:Schema.Types.ObjectId,
-		ref:'question'
+		ref:'Question'
 	}]
 });
 

@@ -185,8 +185,9 @@ $scope.viewAllQuestions = function() {
 			method:"GET",
 			url:"/previewSurvey"
 		}).then(function successCallback(response){
-			
-			var data = response.data
+			debugger
+			$scope.name = response.data[0].name
+			var data = response.data[0]._question
 			var number = 0
 			for (var i = 0; i < data.length; i++) {
 				number++
