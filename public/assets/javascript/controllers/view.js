@@ -81,7 +81,8 @@ $scope.viewAllQuestions = function() {
 				}
 			} 
 			else if (response.data[i].type === "radio") {
-				for (var k = 0; k < response.data[i].options.length || getAll(); k++) {
+			debugger
+				for (var k = 0; k < response.data[i]._answer.length || getAll(); k++) {
 					allNum.push(response.data[i]._answer[k].answer[0])
 				}
 			}

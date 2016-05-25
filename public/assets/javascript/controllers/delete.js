@@ -5,8 +5,10 @@ $scope.destroySession =function(){
 			method:"POST",
 			url:"/logout",
 		}).then(function successCallback(response){
-
+			function go(){
 			$state.go("index")
+			}	
+			setTimeout(go, 6000);
 			
 		}, function errorCallback(response){
 			
