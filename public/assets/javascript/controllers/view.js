@@ -107,13 +107,9 @@ $scope.viewAllQuestions = function() {
 			
 		});
 	}
-	$scope.test = function(){
+	$scope.saveSurvey = function(){
+		$state.go("surveyThanks")
 		var inputs = document.getElementsByTagName('input');
-				function callback(number){
-					inputs.splice(number, 1)
-					inputs[number]
-				console.log(inputs)
-			}
 		var textarea = document.getElementsByTagName('textarea');
 		//need seperate loop, text area doesn't count as an input
 			for (var i = 0; i < textarea.length; i++) {
