@@ -9,6 +9,7 @@ app.controller("home", function($scope, $http, $rootScope, $state){
 			url:"/location"
 		}).then(function successCallback(response){
 			if (response.data != ""){
+				debugger
 
 				$state.go("previewSurvey")
 			}

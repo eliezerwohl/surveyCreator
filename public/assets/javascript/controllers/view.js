@@ -81,7 +81,8 @@ $scope.viewAllQuestions = function() {
 				}
 			} 
 			else if (response.data[i].type === "radio") {
-				for (var k = 0; k < response.data[i].options.length || getAll(); k++) {
+			debugger
+				for (var k = 0; k < response.data[i]._answer.length || getAll(); k++) {
 					allNum.push(response.data[i]._answer[k].answer[0])
 				}
 			}
@@ -107,13 +108,9 @@ $scope.viewAllQuestions = function() {
 			
 		});
 	}
-	$scope.test = function(){
+	$scope.saveSurvey = function(){
+		$state.go("surveyThanks")
 		var inputs = document.getElementsByTagName('input');
-				function callback(number){
-					inputs.splice(number, 1)
-					inputs[number]
-				console.log(inputs)
-			}
 		var textarea = document.getElementsByTagName('textarea');
 		//need seperate loop, text area doesn't count as an input
 			for (var i = 0; i < textarea.length; i++) {
@@ -185,8 +182,9 @@ $scope.viewAllQuestions = function() {
 			method:"GET",
 			url:"/previewSurvey"
 		}).then(function successCallback(response){
-			
-			var data = response.data
+			debugger
+			$scope.name = response.data[0].name
+			var data = response.data[0]._question
 			var number = 0
 			for (var i = 0; i < data.length; i++) {
 				number++
