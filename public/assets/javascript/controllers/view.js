@@ -189,12 +189,12 @@ $scope.viewAllQuestions = function() {
 			for (var i = 0; i < data.length; i++) {
 				number++
 				if(data[i].type === "input"){
-					var preview = "<h2>" + data[i].text + "</h2> <input data-id='" 
+					var preview = "<h2>" + data[i].text + "</h2> <input class='col-md-12' data-id='" 
 					+ data[i]._id + "'data-type='input'>"
 					previewCreator(preview);
 				}
 				else if(data[i].type === "textarea"){
-					var preview = "<h2>" + data[i].text + "</h2> <textarea  data-id='" 
+					var preview = "<h2>" + data[i].text + "</h2> <textarea class='col-md-12' data-id='" 
 					+ data[i]._id + "' rows='" + data[i].lines + "'>"
 					previewCreator(preview) ;
 				}
@@ -202,8 +202,9 @@ $scope.viewAllQuestions = function() {
 					var length = data[i].options.length 
 					var preview = "<h2>" + data[i].text + "</h2>";
 					for (var j = 0;  j < length; j++){
-						
-						preview += "<input name ='" + number +"'type = 'radio' value='" + data[i].options[j] + "'data-id='"  + data[i]._id + "'>" + data[i].options[j]
+			
+
+						preview += "<label class='radio-inline'><input name ='" + number +"'type = 'radio' value='" + data[i].options[j] + "'data-id='"  + data[i]._id + "'>" + data[i].options[j] +"</label>"
 						//minus 1 because j start at zero
 						if (j === length - 1){
 							previewCreator(preview);
@@ -214,8 +215,8 @@ $scope.viewAllQuestions = function() {
 					var length = data[i].options.length 
 					var preview = "<h2>" + data[i].text + "</h2>";
 					for (var j = 0;  j < length; j++){
-						preview += "<input data-number='" + j +"' data-id='" +  data[i]._id 
-						+"' value ='" + data[i].options[j] + "' type = 'checkbox'>" + data[i].options[j]
+						preview += "<label class='checkbox-inline'><input data-number='" + j +"' data-id='" +  data[i]._id 
+						+"' value ='" + data[i].options[j] + "' type = 'checkbox'>" + data[i].options[j] + "</label>"
 						//minus 1 because j start at zero
 						if (j === length - 1){
 							previewCreator(preview);
