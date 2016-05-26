@@ -11,7 +11,7 @@ app.controller("view", function($scope, $http, $state){
 	$http({
 			method:"POST",
 			url:"/storeData",
-			data:{"value":value, "id":id}
+			data:{"value":value, "id":id, "randomId":$scope.randomId}
 		}).then(function successCallback(response){
 
 			
@@ -29,6 +29,18 @@ app.controller("view", function($scope, $http, $state){
 			data:{"id":id}
 		}).then(function successCallback(response){
 			$state.go('deleteConfirm')
+		}, function errorCallback(response){
+			
+		});
+	}
+	$scope.viewUser = function(randomId){
+		debugger
+		$http({
+			method:"POST",
+			url:"/randomUserId",
+			data:{"randomId":randomId}
+		}).then(function successCallback(response){
+
 		}, function errorCallback(response){
 			
 		});
@@ -110,6 +122,7 @@ $scope.viewAllQuestions = function() {
 	}
 	$scope.saveSurvey = function(){
 		$state.go("surveyThanks")
+
 		var inputs = document.getElementsByTagName('input');
 		var textarea = document.getElementsByTagName('textarea');
 		//need seperate loop, text area doesn't count as an input
@@ -177,6 +190,25 @@ $scope.viewAllQuestions = function() {
 
 	}
 	$scope.previewSurvey = function(){
+	var idLength = 15
+	var id = [];
+	var bank = [ "1","2","3","4","5","6","7","8","9",'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+	idCreator()
+	function idCreator(){
+	
+	for (var i = 0; i < idLength; i++) {
+		var char = Math.floor(Math.random() * bank.length)
+		id.push(bank[char])
+	}
+
+	if (id.length === idLength ){
+		$scope.randomId = id.join('')
+		debugger
+		console.log($scope.randomId)
+		
+	
+	}
+}
 
 		$http({
 			method:"GET",
@@ -240,5 +272,6 @@ $scope.viewAllQuestions = function() {
 			
 		});
 	}
+
 
 })//end of controller

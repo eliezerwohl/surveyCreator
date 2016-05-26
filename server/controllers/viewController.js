@@ -6,6 +6,10 @@ exports.viewInputAnswers = function(req, res){
 	debugger
 }
 
+exports.randomUserId = function(req, res){
+	
+}
+
 exports.viewAnswersByQuestion = function(req, res){
 	debugger
 	Answer.find({"_question":req.body.id})

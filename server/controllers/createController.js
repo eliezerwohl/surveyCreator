@@ -11,9 +11,11 @@ exports.shareSurvey = function(req, res){
 	res.send(info)
 }
 exports.storeData = function(req, res){
+	debugger
 	var newAnswer = new Answer({
 		_question:req.body.id,
-		answer:req.body.value
+		answer:req.body.value,
+		randomId:req.body.randomId
 	});
 
 	newAnswer.save(function(err, doc){
@@ -56,7 +58,6 @@ exports.createQuestion=function(req, res){
 		"_survey": req.session.survey,
 		"lines": req.body.lines,
 		"options":req.body.options,
-		"randomId":req.body.randomId
 	});
 	newQuestion.save(function(err, doc) {
 		if (err) {

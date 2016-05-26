@@ -84,6 +84,7 @@ module.exports = function(app) {
 	app.get("/", function(req, res) {
 		res.sendFile(process.cwd() + "/public/home.html")
 	});
+	app.post("/randomUserId", view.randomUserId)
 	app.post("/logout", deleteController.logout)
 	app.post("/viewAnswersByQuestion", view.viewAnswersByQuestion)
 	app.get("/location", home.location)

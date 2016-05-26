@@ -40,6 +40,14 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/share',
       templateUrl: '../views/share.html'
     })
+     .state('viewByUser', {
+      url: '/viewByUser',
+      templateUrl: '../views/viewByUser.html'
+    })
+    .state('viewSurveyChoice', {
+      url: '/viewSurveyChoice',
+      templateUrl: '../views/viewSurveyChoice.html'
+    })
     .state('loggedIn', {
       url: '/loggedIn',
       templateUrl: '../views/loggedIn.html'

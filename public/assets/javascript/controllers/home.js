@@ -3,6 +3,10 @@ app.controller("home", function($scope, $http, $rootScope, $state){
 	$scope.goOlder = function(){
 		$state.go("viewAllSurveys")
 	}
+
+	$scope.allSubmissions = function(){
+		$state.go("viewAllSurveys")
+	}
 	$scope.location = function(){
 		$http({
 			method:"GET",

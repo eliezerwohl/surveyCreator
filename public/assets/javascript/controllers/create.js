@@ -29,7 +29,7 @@ app.controller('create', function($state, $scope, $rootScope, $http) {
 		$http({
 			method: "POST",
 			url: "/newSurvey",
-			data:{"name":$scope.name, "id":$scope.newId }
+			data:{"name":$scope.name}
 		}).then(function successCallback(response) {
 			$state.go("share")
 			var inputs = document.getElementsByTagName('input')
@@ -156,8 +156,7 @@ $scope.count = 0
 					"type": type,
 					"lines": lines,
 					"text": text,
-					"options": options,
-					"randomId":$scope.newId
+					"options": options
 				}
 			}).then(function successCallback(response) {
 
@@ -206,20 +205,4 @@ $scope.count = 0
 		}
 	}
 
-var idLength = 15
-var id = [];
-var bank = [ "1","2","3","4","5","6","7","8","9",'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-
-$scope.idCreator =function(){
-	for (var i = 0; i < idLength; i++) {
-		var char = Math.floor(Math.random() * bank.length)
-		id.push(bank[char])
-	}
-
-	if (id.length === idLength ){
-		$scope.newId = id.join('')
-		
-	
-	}
-}
 }) //end of controller
