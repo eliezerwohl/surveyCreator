@@ -10,7 +10,6 @@ if (PORT === 8080){
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser")
-var mongoose = require('mongoose');
 
 app.use(logger('dev'));
 app.use(express.static('public'));
@@ -22,7 +21,7 @@ app.use(bodyParser.json());
 
 var uristring = process.env.MONGOLAB_URI ||
 	process.env.MONGOHQ_URL ||
-	'mongodb://localhost/projects';
+	'mongodb://localhost/survey';
 
 mongoose.connect(uristring, function(err, res) {
 	if (err) {
