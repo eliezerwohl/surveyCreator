@@ -10,7 +10,7 @@
 
  <tr ng-repeat="data in data">
  	<td> <button ng-click="goTo(data._id)"> View Results </button> </td>
- 	<td> <button ng-click="viewUser(data._id)"> view by user  </button> </td>
+ 	<td> <button ng-click="viewUsers(data._id)"> view by user  </button> </td>
  	<td> {{data.name}} </td>
  	<td>{{data.date | date:'short'}}  </td>
  	<td> <button ng-click="deleteSurvey(data._id)"> delete button goes here </button>

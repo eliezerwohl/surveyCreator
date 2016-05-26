@@ -12,7 +12,10 @@ var SurveySchema= new Schema({
 	_question:[{type:Schema.Types.ObjectId,
 		ref:'Question'
 	}],
-	_randomId:[{type:String}]
+	_randomId:[{
+						id:{type:String},
+						date:{type:Date, default:Date.now}
+					}]
 });
 
 var Survey = mongoose.model('Survey', SurveySchema);

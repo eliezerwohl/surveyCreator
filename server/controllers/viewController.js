@@ -6,13 +6,28 @@ exports.viewInputAnswers = function(req, res){
 	
 }
 
+exports.userList = function(req, res){
+	Survey.find({"_id":req.session.surveyId})
+	.exec(function(err, docs){
+		if (err){
+			res.send(err)
+		}
+		else{
+			res.send(docs[0]._doc._randomId)
+		}
+	})
+
+}
+
 exports.surveySave = function(req, res){
 			var questionId= req.body.id
 			var surveyId = req.body.surveyId
 
 			Survey.findByIdAndUpdate(surveyId, {
 				$push: {
-					"_randomId": req.body.randomId
+					"_randomId": {
+						id:req.body.randomId
+					}
 				}
 			}, {
 				safe: true,
@@ -28,16 +43,10 @@ exports.surveySave = function(req, res){
 			})
 }
 
-exports.randomUserId = function(req, res){
-	Answer.find({"randomId":req.body.randomId})
-	.exec(function(err, docs){
-		if (err){
-			res.send(err)
-		}
-		else{
-			res.send(docs)
-		}
-	})
+exports.surveyId = function(req, res){
+	debugger
+	req.session.surveyId =req.body.id
+	res.send("got it")
 }
 
 exports.viewAnswersByQuestion = function(req, res){

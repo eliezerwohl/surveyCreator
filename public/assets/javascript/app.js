@@ -32,6 +32,10 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/deleteConfirm',
       templateUrl: '../views/deleteConfirm.html'
     })
+      .state('viewUserList', {
+      url: '/viewUserList',
+      templateUrl: '../views/viewUserList.html'
+    })
     .state('signUp', {
       url: '/signUp',
       templateUrl: '../views/signUp.html'
