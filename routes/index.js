@@ -65,6 +65,7 @@ module.exports = function(app) {
 	passport.deserializeUser(function(user, done) {
 		done(null, user);
 	});
+	app.post("/thisUser", view.thisUser)
 	app.post("/surveySave", view.surveySave)
 	app.get("/deleteSurvey", deleteController.deleteSurvey)
 	app.post("/deleteSurveyData", deleteController.deleteSurveyData)
