@@ -6,9 +6,10 @@ exports.viewInputAnswers = function(req, res){
 	
 }
 
+
 exports.thisUser = function(req, res){
 
-	console.log(req.body.id)
+	req.session.userId = req.body.id 
 	res.send("got it")
 
 }
