@@ -6,6 +6,13 @@ exports.viewInputAnswers = function(req, res){
 	
 }
 
+exports.thisUser = function(req, res){
+
+	console.log(req.body.id)
+	res.send("got it")
+
+}
+
 exports.userList = function(req, res){
 	Survey.find({"_id":req.session.surveyId})
 	.exec(function(err, docs){

@@ -1,6 +1,9 @@
 <div ng-controller="viewByUser" ng-init="userList()">
   <div ng-repeat="data in data">
-  {{data}}
+  		{{$index + 1}}
+  		{{data.date | date:'short'}}
+
+  		<button ng-click="thisUser(data.id)"> See this user
   </div>
 
 </div>
