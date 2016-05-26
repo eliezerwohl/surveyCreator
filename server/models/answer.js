@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var AnswerSchema = new Schema({
+	randomId:String,
 	_question: {
 		type:Schema.Types.ObjectId,
 		ref: "question"
