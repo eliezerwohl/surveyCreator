@@ -7,6 +7,9 @@ exports.viewInputAnswers = function(req, res){
 }
 
 
+exports.viewThisUser = function(req, res){
+	res.send(req.session.userId)
+}
 exports.thisUser = function(req, res){
 
 	req.session.userId = req.body.id 

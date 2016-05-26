@@ -4,8 +4,13 @@ app.controller("viewByUser", function($scope, $rootScope, $http, $state){
 		debugger
 	}
 	$scope.viewByUserResults=function(){
-		
+
 	$http({
+		method: "GET",
+		url: "/viewThisUser"
+	}).then(function successCallback(docs) {
+		var thisUserId = docs.data 
+			$http({
 		method: "GET",
 		url: "/viewAllQuestions"
 	}).then(function successCallback(response) {
@@ -16,7 +21,7 @@ app.controller("viewByUser", function($scope, $rootScope, $http, $state){
 				
 				console.log($rootScope.thisUserId)
 				
-				if (response.data[i]._answer[j].randomId === $rootScope.thisUserId){
+				if (response.data[i]._answer[j].randomId === thisUserId){
 					
 					var question = response.data[i].text 
 					var answer = response.data[i]._answer[j].answer[0]
@@ -28,10 +33,11 @@ app.controller("viewByUser", function($scope, $rootScope, $http, $state){
 
 	})
 
+	})
+	
+
 }
 	$rootScope.thisUser= function(id){
-		
-		$rootScope.thisUserId = id
 		
 			$http({
 			method:"POST",
