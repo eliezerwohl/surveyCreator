@@ -25,7 +25,9 @@ exports.surveySave = function(req, res){
 
 			Survey.findByIdAndUpdate(surveyId, {
 				$push: {
-					"_randomId": req.body.randomId
+					"_randomId": {
+						id:req.body.randomId
+					}
 				}
 			}, {
 				safe: true,

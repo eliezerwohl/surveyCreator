@@ -6,6 +6,8 @@ $scope.userList= function(){
 			method:"GET",
 			url:"/userList",
 		}).then(function successCallback(response){
+			debugger
+			$scope.data = response.data 
 
 			
 		}, function errorCallback(response){
