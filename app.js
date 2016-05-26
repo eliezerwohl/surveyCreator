@@ -16,7 +16,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
-
 app.use(bodyParser.json());
 
 mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGODB_URI ||'mongodb://localhost/survey');
