@@ -33,14 +33,14 @@ app.controller("view", function($scope, $http, $state){
 			
 		});
 	}
-	$scope.viewUser = function(randomId){
-		debugger
+	$scope.viewUsers = function(id){
+
 		$http({
 			method:"POST",
-			url:"/randomUserId",
-			data:{"randomId":randomId}
+			url:"/surveyId",
+			data:{"id":id}
 		}).then(function successCallback(response){
-
+			$state.go("viewUserList")
 		}, function errorCallback(response){
 			
 		});

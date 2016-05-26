@@ -6,6 +6,11 @@ exports.viewInputAnswers = function(req, res){
 	
 }
 
+exports.userList = function(req, res){
+
+
+}
+
 exports.surveySave = function(req, res){
 			var questionId= req.body.id
 			var surveyId = req.body.surveyId
@@ -28,16 +33,10 @@ exports.surveySave = function(req, res){
 			})
 }
 
-exports.randomUserId = function(req, res){
-	Answer.find({"randomId":req.body.randomId})
-	.exec(function(err, docs){
-		if (err){
-			res.send(err)
-		}
-		else{
-			res.send(docs)
-		}
-	})
+exports.surveyId = function(req, res){
+	debugger
+	req.session.surveyId =req.body.id
+	res.send("got it")
 }
 
 exports.viewAnswersByQuestion = function(req, res){
