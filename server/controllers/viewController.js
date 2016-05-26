@@ -3,15 +3,45 @@ var Survey = require("../models/survey");
 var Answer = require("../models/answer");
 
 exports.viewInputAnswers = function(req, res){
-	debugger
-}
-
-exports.randomUserId = function(req, res){
 	
 }
 
+exports.surveySave = function(req, res){
+			var questionId= req.body.id
+			var surveyId = req.body.surveyId
+
+			Survey.findByIdAndUpdate(surveyId, {
+				$push: {
+					"_randomId": req.body.randomId
+				}
+			}, {
+				safe: true,
+				upsert: true
+			}, function(err, model) {
+
+				if (err){
+					res.send(err)
+				}
+				else{
+					res.send(model)
+				}
+			})
+}
+
+exports.randomUserId = function(req, res){
+	Answer.find({"randomId":req.body.randomId})
+	.exec(function(err, docs){
+		if (err){
+			res.send(err)
+		}
+		else{
+			res.send(docs)
+		}
+	})
+}
+
 exports.viewAnswersByQuestion = function(req, res){
-	debugger
+	
 	Answer.find({"_question":req.body.id})
 	.exec(function(err, docs){
 		if (err){
@@ -27,7 +57,7 @@ exports.viewAllQuestions = function(req, res){
 	Question.find({"_survey":req.session.surveyId})
 	.populate("_answer")
 	.exec(function(err, docs){
-		debugger
+		
 		if (err){
 			res.send(err)
 		}
@@ -38,7 +68,7 @@ exports.viewAllQuestions = function(req, res){
 }
 
 exports.goTo = function(req, res){
-	debugger
+	
 	req.session.surveyId = req.body.id
 	res.send('got it')
 }
@@ -79,7 +109,7 @@ exports.previewSurvey = function(req, res){
 			console.log (err)
 		}
 		else{
-			debugger
+			
 			res.send(docs)
 		}
 	});

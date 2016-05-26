@@ -120,147 +120,150 @@ $scope.viewAllQuestions = function() {
 			
 		});
 	}
-	$scope.saveSurvey = function(){
-		$state.go("surveyThanks")
 
-		var inputs = document.getElementsByTagName('input');
-		var textarea = document.getElementsByTagName('textarea');
-		//need seperate loop, text area doesn't count as an input
-			for (var i = 0; i < textarea.length; i++) {
-						var value = textarea[i].value
-						var id = textarea[i].dataset.id
-						var push = false
-						console.log("this is a textarea" +value + id + push)
-						storeData(value, id)
-			}
-			var l = inputs.length
-			
+	$scope.saveSurvey = function() {
+	    $http({
+	        method: "POST",
+	        url: "/surveySave",
+	        data: {
+	          "surveyId": $scope.surveyId,
+	          "randomId": $scope.randomId
+	        }
+	    }).then(function successCallback(response) {
+	        $state.go("surveyThanks")
 
-			for (i = 0; i < l; i++) {
-					
-					
-					if ((inputs[i].type === "checkbox")  && (inputs[i].dataset.number=== "0")){
-						var valueArray = [];
-						var k = 0;
-						for (var j = 0; j < l; j++) {
-							k++
-							
-						
-								if ((inputs[j].type === "checkbox") && (inputs[i].dataset.id === inputs[j].dataset.id) && (inputs[j].checked === true )){
-										valueArray.push(inputs[j].value)
-						
-										
-								}
+	        var inputs = document.getElementsByTagName('input');
+	        var textarea = document.getElementsByTagName('textarea');
+	        //need seperate loop, text area doesn't count as an input
+	        for (var i = 0; i < textarea.length; i++) {
+	            var value = textarea[i].value
+	            var id = textarea[i].dataset.id
+	            var push = false
+	            console.log("this is a textarea" + value + id + push)
+	            storeData(value, id)
+	        }
+	        var l = inputs.length
 
-							}
-						if ( k === inputs.length){
-							var value = valueArray
-							var id = inputs[i].dataset.id
-							storeData(value, id) 
-							
-						}
-					
-						// var id = inputs[i].dataset.id
-						// var push = true
-						// console.log("this is a checkbox" +value + id + push)
-						// storeData(value, id)
-						//add another value so it will know to push it on
 
-					}
-					else if ((inputs[i].type === "radio")  && (inputs[i].checked === true)) {
-						// console.log("the value ofo this radion is" + inputs[i].value)
-						var value = inputs[i].value
-						var id = inputs[i].dataset.id
-						console.log("this is a radio" +value + id + push)
-						storeData(value, id)
+	        for (i = 0; i < l; i++) {
 
-					}
-					//if it's just an input
-						else if (inputs[i].dataset.type === "input") {
-							
-						var value = inputs[i].value
-						var id = inputs[i].dataset.id
-						storeData(value, id)
-					}
-			}
+
+	            if ((inputs[i].type === "checkbox") && (inputs[i].dataset.number === "0")) {
+	                var valueArray = [];
+	                var k = 0;
+	                for (var j = 0; j < l; j++) {
+	                    k++
+
+
+	                    if ((inputs[j].type === "checkbox") && (inputs[i].dataset.id === inputs[j].dataset.id) && (inputs[j].checked === true)) {
+	                        valueArray.push(inputs[j].value)
+
+
+	                    }
+
+	                }
+	                if (k === inputs.length) {
+	                    var value = valueArray
+	                    var id = inputs[i].dataset.id
+	                    storeData(value, id)
+
+	                }
+	            } else if ((inputs[i].type === "radio") && (inputs[i].checked === true)) {
+	                // console.log("the value ofo this radion is" + inputs[i].value)
+	                var value = inputs[i].value
+	                var id = inputs[i].dataset.id
+	                console.log("this is a radio" + value + id + push)
+	                storeData(value, id)
+
+	            }
+	            //if it's just an input
+	            else if (inputs[i].dataset.type === "input") {
+
+	                var value = inputs[i].value
+	                var id = inputs[i].dataset.id
+	                storeData(value, id)
+	            }
+	        }
+
+	    }, function errorCallback(response) {
+
+	    });
 	}
 	function previewCreator(previewQuestion){
-	angular.element(document.getElementById('target'))
-	.append(previewQuestion) 
-
+		angular.element(document.getElementById('target'))
+		.append(previewQuestion) 
 	}
-	$scope.previewSurvey = function(){
-	var idLength = 15
-	var id = [];
-	var bank = [ "1","2","3","4","5","6","7","8","9",'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-	idCreator()
-	function idCreator(){
 	
-	for (var i = 0; i < idLength; i++) {
-		var char = Math.floor(Math.random() * bank.length)
-		id.push(bank[char])
-	}
+$scope.previewSurvey = function() {
+    var idLength = 15
+    var id = [];
+    var bank = ["1", "2", "3", "4", "5", "6", "7", "8", "9", 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    idCreator()
 
-	if (id.length === idLength ){
-		$scope.randomId = id.join('')
-		debugger
-		console.log($scope.randomId)
-		
-	
-	}
+    function idCreator() {
+
+        for (var i = 0; i < idLength; i++) {
+            var char = Math.floor(Math.random() * bank.length)
+            id.push(bank[char])
+        }
+
+        if (id.length === idLength) {
+            $scope.randomId = id.join('')
+
+            console.log($scope.randomId)
+
+
+        }
+    }
+
+    $http({
+        method: "GET",
+        url: "/previewSurvey"
+    }).then(function successCallback(response) {
+        $scope.surveyId = response.data[0]._id
+        $scope.name = response.data[0].name
+        var data = response.data[0]._question
+        var number = 0
+        for (var i = 0; i < data.length; i++) {
+            number++
+            if (data[i].type === "input") {
+                var preview = "<h2>" + data[i].text + "</h2> <input class='col-md-12' data-id='" +
+                    data[i]._id + "'data-type='input'>"
+                previewCreator(preview);
+            } else if (data[i].type === "textarea") {
+                var preview = "<h2>" + data[i].text + "</h2> <textarea class='col-md-12' data-id='" +
+                    data[i]._id + "' rows='" + data[i].lines + "'>"
+                previewCreator(preview);
+            } else if (data[i].type === "radio") {
+                var length = data[i].options.length
+                var preview = "<h2>" + data[i].text + "</h2>";
+                for (var j = 0; j < length; j++) {
+
+
+                    preview += "<label class='radio-inline'><input name ='" + number + "'type = 'radio' value='" + data[i].options[j] + "'data-id='" + data[i]._id + "'>" + data[i].options[j] + "</label>"
+                        //minus 1 because j start at zero
+                    if (j === length - 1) {
+                        previewCreator(preview);
+                    }
+                }
+            } else if (data[i].type === "checkbox") {
+                var length = data[i].options.length
+                var preview = "<h2>" + data[i].text + "</h2>";
+                for (var j = 0; j < length; j++) {
+                    preview += "<label class='checkbox-inline'><input data-number='" + j + "' data-id='" + data[i]._id +
+                        "' value ='" + data[i].options[j] + "' type = 'checkbox'>" + data[i].options[j] + "</label>"
+                        //minus 1 because j start at zero
+                    if (j === length - 1) {
+                        previewCreator(preview);
+                    }
+                }
+            }
+        }
+
+    }, function errorCallback(reponse) {
+
+    });
 }
-
-		$http({
-			method:"GET",
-			url:"/previewSurvey"
-		}).then(function successCallback(response){
-			debugger
-			$scope.name = response.data[0].name
-			var data = response.data[0]._question
-			var number = 0
-			for (var i = 0; i < data.length; i++) {
-				number++
-				if(data[i].type === "input"){
-					var preview = "<h2>" + data[i].text + "</h2> <input class='col-md-12' data-id='" 
-					+ data[i]._id + "'data-type='input'>"
-					previewCreator(preview);
-				}
-				else if(data[i].type === "textarea"){
-					var preview = "<h2>" + data[i].text + "</h2> <textarea class='col-md-12' data-id='" 
-					+ data[i]._id + "' rows='" + data[i].lines + "'>"
-					previewCreator(preview) ;
-				}
-				else if(data[i].type === "radio"){
-					var length = data[i].options.length 
-					var preview = "<h2>" + data[i].text + "</h2>";
-					for (var j = 0;  j < length; j++){
-			
-
-						preview += "<label class='radio-inline'><input name ='" + number +"'type = 'radio' value='" + data[i].options[j] + "'data-id='"  + data[i]._id + "'>" + data[i].options[j] +"</label>"
-						//minus 1 because j start at zero
-						if (j === length - 1){
-							previewCreator(preview);
-						}
-					}
-				}
-				else if(data[i].type === "checkbox"){
-					var length = data[i].options.length 
-					var preview = "<h2>" + data[i].text + "</h2>";
-					for (var j = 0;  j < length; j++){
-						preview += "<label class='checkbox-inline'><input data-number='" + j +"' data-id='" +  data[i]._id 
-						+"' value ='" + data[i].options[j] + "' type = 'checkbox'>" + data[i].options[j] + "</label>"
-						//minus 1 because j start at zero
-						if (j === length - 1){
-							previewCreator(preview);
-						}
-					}
-				}		
-			}
-
-		}, function errorCallback(reponse){
-
-		});
-	}
 	$scope.viewAllSurveys = function(){
 		$http({
 			method:"GET",

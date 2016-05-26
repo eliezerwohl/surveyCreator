@@ -11,7 +11,8 @@ var SurveySchema= new Schema({
 	},
 	_question:[{type:Schema.Types.ObjectId,
 		ref:'Question'
-	}]
+	}],
+	_randomId:[{type:String}]
 });
 
 var Survey = mongoose.model('Survey', SurveySchema);
