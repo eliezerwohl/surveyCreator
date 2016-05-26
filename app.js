@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/survey');
+mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGODB_URI ||'mongodb://localhost/survey');
 // var uristring = process.env.MONGOLAB_URI ||
 // 	process.env.MONGOHQ_URL || 
 // 	'mongodb://localhost/survey';
