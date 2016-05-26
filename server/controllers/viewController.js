@@ -7,7 +7,15 @@ exports.viewInputAnswers = function(req, res){
 }
 
 exports.userList = function(req, res){
-
+	Survey.find({"_id":req.session.surveyId})
+	.exec(function(err, docs){
+		if (err){
+			res.send(err)
+		}
+		else{
+			res.send(docs[0]._doc._randomId)
+		}
+	})
 
 }
 
