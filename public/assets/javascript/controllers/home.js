@@ -1,4 +1,4 @@
-app.controller("home", function($scope, $http, $rootScope, $state){
+vapp.controller("home", function($scope, $http, $rootScope, $state){
 
 
 	$scope.goOlder = function(){
