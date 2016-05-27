@@ -4,7 +4,52 @@ function viewInputAnswers(id){
 	window.location.hash ="/viewAnswersByQuestion"
 }
 
-app.controller("view", function($scope, $http, $state){
+
+
+app.controller("view", function($rootScope, $scope, $http, $state){
+
+	// Get the modal
+
+
+
+window.onload = function() {
+	var modal = document.getElementById('myModal');
+	var btn = document.getElementsByClassName("myBtn");
+	var span = document.getElementsByClassName("close")[0];
+	var no = document.getElementsByClassName("no")[0]
+		// When the user clicks on the button, open the modal 
+	$scope.modalGo = function(id) {
+		$http({
+			method: "POST",
+			url: "/deleteSurveyData",
+			data: {
+				"id": id
+			}
+		}).then(function successCallback(response) {
+			modal.style.display = "block"
+		}, function errorCallback(response) {
+
+		});;
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+
+	no.onclick = function() {
+			modal.style.display = "none";
+		}
+		// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+
+};
+
+// Get the <span> element that closes the modal
 
 
 	function storeData(value, id){
@@ -93,7 +138,7 @@ $scope.viewAllQuestions = function() {
 				}
 			} 
 			else if (response.data[i].type === "radio") {
-			debugger
+			
 				for (var k = 0; k < response.data[i]._answer.length || getAll(); k++) {
 					allNum.push(response.data[i]._answer[k].answer[0])
 				}

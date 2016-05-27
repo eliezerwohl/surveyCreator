@@ -21,11 +21,14 @@ $scope.deleteSurvey=function(){
 			method:"GET",
 			url:"/deleteSurvey",
 		}).then(function successCallback(response){
-			$state.go("viewAllSurveys")
+			$state.go($state.current, {}, {
+    	reload: true
+  });
 			
 		}, function errorCallback(response){
 			
 		});
+
 }
 
 })

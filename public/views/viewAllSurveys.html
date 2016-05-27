@@ -1,4 +1,19 @@
 <div ng-controller="view" ng-init="viewAllSurveys()">
+<!-- Trigger/Open The Modal -->
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" ng-controller="delete">
+    <span class="close">x</span>
+    <p>Are You SURE YOU WANNA DELETE THIS MOFO?..</p>
+    <button ng-click="deleteSurvey()">  Yes  </button>
+
+    <button class="no"> no</button>
+  </div>
+</div>
 	<table class="table">
 		<tr>
 			<th> GO! </td>
@@ -13,8 +28,11 @@
  	<td> <button ng-click="viewUsers(data._id)"> view by user  </button> </td>
  	<td> {{data.name}} </td>
  	<td>{{data.date | date:'short'}}  </td>
- 	<td> <button ng-click="deleteSurvey(data._id)"> delete button goes here </button>
+ 	<td> <button ng-click="modalGo(data._id)"	 class="myBtn">Open Modal</button>  </td>
+<!--  	<td> <button id="myBtn" ng-click="deleteSurvey(data._id)"> delete button goes here </button> </td> -->
  </tr>
-
+</div>
 
 </div>
+
+
