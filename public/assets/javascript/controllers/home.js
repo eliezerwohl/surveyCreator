@@ -1,5 +1,19 @@
 app.controller("home", function($scope, $http, $rootScope, $state){
 
+//universal back buttong
+$rootScope.previousState;
+$rootScope.currentState;
+$rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+    $rootScope.previousState = from.name;
+    $rootScope.currentState = to.name;
+    console.log($rootScope.previousState)
+});
+
+$scope.backButton=function(){
+            myService.foo();
+      
+}
+
 	$scope.goOlder = function(){
 		$state.go("viewAllSurveys")
 	}

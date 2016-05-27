@@ -1,4 +1,16 @@
-app.controller("viewAnswers", function($scope, $cookies, $http, $state){
+app.controller("viewAnswers", function($scope, $rootScope, $cookies, $http, $state){
+
+	$rootScope.thisUser= function(id){
+			$http({
+			method:"POST",
+			url:"/thisUser",
+			data:{"id":id}
+		}).then(function successCallback(response){
+			$state.go("viewByUser")			
+		}, function errorCallback(response){
+			
+		});
+	}
 
 $scope.viewAnswersByQuestion = function(){
 var cookie  = $cookies.get("store")
