@@ -9,9 +9,11 @@ $http({
 		}).then(function successCallback(response){
 			$scope.data = []
 			for (var i = 0; i < response.data.length; i++) {
-				debugger
-				response.data[1].answer[0]
-				$scope.data.push(response.data[i].answer[0])
+					
+					var randomId = response.data[i].randomId
+					var answer = response.data[i].answer[0]
+					var object = {"answer":answer, "randomId":randomId}
+				$scope.data.push(object)
 			}
 			
 
