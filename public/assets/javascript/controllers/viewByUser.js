@@ -18,6 +18,7 @@ app.controller("viewByUser", function($scope, $rootScope, $http, $state){
 				method: "GET",
 				url: "/viewAllQuestions"
 			}).then(function successCallback(response) {
+				
 
 				for (var i = 0; i < response.data.length; i++) {
 
