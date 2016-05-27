@@ -1,5 +1,7 @@
 app.controller('answer', function($state, $scope, $rootScope, $http) {
 
+
+
 $scope.getSurvey=function(){
 	$http({
 			method:"GET",
