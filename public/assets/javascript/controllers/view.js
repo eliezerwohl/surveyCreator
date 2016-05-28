@@ -19,7 +19,7 @@ app.controller("view", function($rootScope, $scope, $http, $state){
 
 
 
-window.onload = function() {
+
 	var hidden = document.getElementsByClassName('hidden')
 	for (var i = 0; i < hidden.length; i++) {
 		hidden[i].style.display = ''; 
@@ -59,7 +59,6 @@ window.onload = function() {
 		}
 	}
 
-};
 
 // Get the <span> element that closes the modal
 

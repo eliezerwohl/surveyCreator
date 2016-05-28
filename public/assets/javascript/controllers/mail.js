@@ -1,4 +1,4 @@
-vapp.controller("mail", function($scope, $http, $state){
+app.controller("mail", function($scope, $http, $state){
 
 $scope.sendMail=function(){
 	
