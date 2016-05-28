@@ -4,6 +4,13 @@ function viewInputAnswers(id){
 	window.location.hash ="/viewAnswersByQuestion"
 }
 
+function showAnswer(classShow){
+	debugger
+	var hidden = document.getElementsByClassName(classShow)
+	for (var i = 0; i < hidden.length; i++) {
+		hidden[i].style.display = 'block'; 
+	};
+}
 
 
 app.controller("view", function($rootScope, $scope, $http, $state){
@@ -12,7 +19,12 @@ app.controller("view", function($rootScope, $scope, $http, $state){
 
 
 
-window.onload = function() {
+
+	var hidden = document.getElementsByClassName('hidden')
+	for (var i = 0; i < hidden.length; i++) {
+		hidden[i].style.display = ''; 
+	};
+
 	var modal = document.getElementById('myModal');
 	var btn = document.getElementsByClassName("myBtn");
 	var span = document.getElementsByClassName("close")[0];
@@ -33,21 +45,20 @@ window.onload = function() {
 	}
 
 	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
+	// span.onclick = function() {
+	// 	modal.style.display = "none";
+	// }
 
-	no.onclick = function() {
-			modal.style.display = "none";
-		}
-		// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
+	// no.onclick = function() {
+	// 		modal.style.display = "none";
+	// 	}
+	// 	// When the user clicks anywhere outside of the modal, close it
+	// window.onclick = function(event) {
+	// 	if (event.target == modal) {
+	// 		modal.style.display = "none";
+	// 	}
+	// }
 
-};
 
 // Get the <span> element that closes the modal
 
@@ -95,8 +106,10 @@ $scope.viewAllQuestions = function() {
 		method: "GET",
 		url: "/viewAllQuestions"
 	}).then(function successCallback(response) {
+		$scope.tracker = 0 
 		for (var i = 0; i < response.data.length; i++) {
-			var question = "<p>the question is " + response.data[i].text + "</p>"
+			$scope.tracker++
+			var question = "<h2>"+ response.data[i].text + "</h2>"
 			previewCreator(question)
 			var allNum = []
 			var total = 0
@@ -145,8 +158,13 @@ $scope.viewAllQuestions = function() {
 			}
 			else if ((response.data[i].type==="input") || (response.data[i].type==="textarea")){
 			var id = response.data[i]._id
-				var button = "<button onclick='viewInputAnswers(`" +id +"`)'>See all responses  </button>"
+			var button1 ="<button onclick='showAnswer(`show"+ $scope.tracker + "`)'>SHOW </button>"
+			previewCreator(button1)
+			for (var j = 0; j < response.data[i]._answer.length; j++) {
+				var button = "<p class='hideIt show" + $scope.tracker + "'>" +response.data[i]._answer[j].answer[0] + "</p>"
 				previewCreator(button)
+			}
+			
 			}
 		}
 		$scope.data = response.data
@@ -240,6 +258,7 @@ $scope.viewAllQuestions = function() {
 	}
 	
 $scope.previewSurvey = function() {
+
     var idLength = 15
     var id = [];
     var bank = ["1", "2", "3", "4", "5", "6", "7", "8", "9", 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']

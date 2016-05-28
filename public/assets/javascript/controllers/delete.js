@@ -15,7 +15,17 @@ $scope.destroySession =function(){
 		});
 
 }
+	var modal = document.getElementById('myModal');
+	
+  $scope.close=function(){
+  	var span = document.getElementsByClassName("close")[0];
 
+  	modal.style.display = "none";	
+  }
+ $scope.no=function(){
+ 	var modal = document.getElementById('myModal');
+ 	modal.style.display = "none";
+ }
 $scope.deleteSurvey=function(){
 	$http({
 			method:"GET",
