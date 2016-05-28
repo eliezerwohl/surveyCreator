@@ -125,7 +125,7 @@ $scope.count = 0
 				}
 				else {
 					//for production
-					$scope.msg = "name.herokuapp.com/viewSurvey/" + response.data.surveyId
+					$scope.msg = "https://secretsurvey.herokuapp.com/viewSurvey/" + response.data.surveyId
 				}
 		
 			})
