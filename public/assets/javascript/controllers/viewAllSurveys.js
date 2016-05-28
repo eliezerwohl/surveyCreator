@@ -1,9 +1,5 @@
 app.controller("viewAllSurveys", function($rootScope, $scope, $http, $state){
 
-
-	$scope.testing= function(){
-		alert("unicorn")
-	}
 $scope.viewAllSurveys = function(){
 		$http({
 			method:"GET",
