@@ -7,13 +7,15 @@ function viewInputAnswers(id){
 function showAnswer(classShow){
 	
 	var hidden = document.getElementsByClassName(classShow)
-	
+	var button = document.getElementById(classShow)
 
 	if (hidden[0].style.display === "block") {
+		button.innerHTML = "Show"
 		for (var i = 0; i < hidden.length; i++) {
 		hidden[i].style.display = ''; 
 	};	}
 	else{
+		button.innerHTML = "Hide"
 			for (var i = 0; i < hidden.length; i++) {
 		hidden[i].style.display = 'block'; 
 	};
@@ -115,7 +117,7 @@ $scope.viewAllQuestions = function() {
 			}
 			else if ((response.data[i].type==="input") || (response.data[i].type==="textarea")){
 			var id = response.data[i]._id
-			var button1 ="<button onclick='showAnswer(`show"+ $scope.tracker + "`)'>SHOW </button>"
+			var button1 ="<button id='show"+ $scope.tracker +"' onclick='showAnswer(`show"+ $scope.tracker + "`)'>SHOW </button>"
 			previewCreator(button1)
 			for (var j = 0; j < response.data[i]._answer.length; j++) {
 				var button = "<p class='hideIt show" + $scope.tracker + "'>" +response.data[i]._answer[j].answer[0] + "</p>"
