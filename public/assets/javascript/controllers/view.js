@@ -4,45 +4,31 @@ function viewInputAnswers(id){
 	window.location.hash ="/viewAnswersByQuestion"
 }
 
+//show and hide function since I'm not using jquery  
+
 function showAnswer(classShow){
-	
 	var hidden = document.getElementsByClassName(classShow)
 	var button = document.getElementById(classShow)
-
 	if (hidden[0].style.display === "block") {
-		button.innerHTML = "Show"
+		button.innerHTML = "Show Results"
 		for (var i = 0; i < hidden.length; i++) {
-		hidden[i].style.display = ''; 
-	};	}
-	else{
-		button.innerHTML = "Hide"
-			for (var i = 0; i < hidden.length; i++) {
-		hidden[i].style.display = 'block'; 
-	};
-	
+			hidden[i].style.display = ''; 
+		};	
 	}
-	
+	else {
+		button.innerHTML = "Hide Results"
+		for (var i = 0; i < hidden.length; i++) {
+			hidden[i].style.display = 'block'; 
+		};
+	}
 }
 
 
 app.controller("view", function($rootScope, $scope, $http, $state){
-
-	// Get the modal
-
-
-
-
-
 	var hidden = document.getElementsByClassName('hidden')
 	for (var i = 0; i < hidden.length; i++) {
 		hidden[i].style.display = ''; 
 	};
-
-	
-
-
-// Get the <span> element that closes the modal
-
 
 	function storeData(value, id){
 	$http({
@@ -50,15 +36,11 @@ app.controller("view", function($rootScope, $scope, $http, $state){
 			url:"/storeData",
 			data:{"value":value, "id":id, "randomId":$scope.randomId}
 		}).then(function successCallback(response){
-
 			
 		}, function errorCallback(response){
 			
 		});
 	}
-
-
-
 
 $scope.viewAllQuestions = function() {
 	$http({
@@ -76,13 +58,13 @@ $scope.viewAllQuestions = function() {
 			function getAll() {
 				function calcThis() {
 					if (m === response.data[i].options.length - 1){
-						var answer = "<p>  " + thisOption + "appears" 
-						+ (100 - total) + "%</p>"
+						var answer = "<h5>  " + thisOption + ": " 
+						+ (100 - total) + "%</h5>"
 						previewCreator(answer)					
 					}
 					else{
-						var answer = "<p> " + thisOption + "appears" +
-						Math.round((match / allNum.length) * 100) + "%</p>"
+						var answer = "<h5> " + thisOption + ": " +
+						Math.round((match / allNum.length) * 100) + "%</h5>"
 						previewCreator(answer)
 						total += Math.round((match / allNum.length) * 100) 
 					}
@@ -117,11 +99,11 @@ $scope.viewAllQuestions = function() {
 			}
 			else if ((response.data[i].type==="input") || (response.data[i].type==="textarea")){
 			var id = response.data[i]._id
-			var button1 ="<button id='show"+ $scope.tracker +"' onclick='showAnswer(`show"+ $scope.tracker + "`)'>SHOW </button>"
-			previewCreator(button1)
+			var button ="<button class='btn btn-sm btn-default ' id='show"+ $scope.tracker +"' onclick='showAnswer(`show"+ $scope.tracker + "`)'>Show Results </button>"
+			previewCreator(button)
 			for (var j = 0; j < response.data[i]._answer.length; j++) {
-				var button = "<p class='hideIt show" + $scope.tracker + "'>" +response.data[i]._answer[j].answer[0] + "</p>"
-				previewCreator(button)
+				var result = "<p class='hideIt show" + $scope.tracker + "'>" +response.data[i]._answer[j].answer[0] + "</p>"
+				previewCreator(result)
 			}
 			
 			}
