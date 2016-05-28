@@ -45,19 +45,19 @@ app.controller("view", function($rootScope, $scope, $http, $state){
 	}
 
 	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
+	// span.onclick = function() {
+	// 	modal.style.display = "none";
+	// }
 
-	no.onclick = function() {
-			modal.style.display = "none";
-		}
-		// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
+	// no.onclick = function() {
+	// 		modal.style.display = "none";
+	// 	}
+	// 	// When the user clicks anywhere outside of the modal, close it
+	// window.onclick = function(event) {
+	// 	if (event.target == modal) {
+	// 		modal.style.display = "none";
+	// 	}
+	// }
 
 
 // Get the <span> element that closes the modal
@@ -258,6 +258,7 @@ $scope.viewAllQuestions = function() {
 	}
 	
 $scope.previewSurvey = function() {
+
     var idLength = 15
     var id = [];
     var bank = ["1", "2", "3", "4", "5", "6", "7", "8", "9", 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
