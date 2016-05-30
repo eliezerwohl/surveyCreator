@@ -1,6 +1,10 @@
 app.controller("home", function($scope, $http, $rootScope, $state){
 
-
+	$scope.demoButton= function(){
+		$scope.username = "johnnyBGoode"
+		$scope.password = "chuckberry"
+		$scope.login()
+	}
 	$scope.goOlder = function(){
 		$state.go("viewAllSurveys")
 	}
