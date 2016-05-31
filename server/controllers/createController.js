@@ -11,7 +11,8 @@ exports.shareSurvey = function(req, res){
 	res.send(info)
 }
 exports.storeData = function(req, res){
-	debugger
+	req.session.fillSurvey = ''
+	
 	var newAnswer = new Answer({
 		_question:req.body.id,
 		answer:req.body.value,
@@ -24,7 +25,7 @@ exports.storeData = function(req, res){
 			console.log (err)
 		}
 		else{
-			debugger
+			
 			var questionId= req.body.id
 			var answerId = doc._doc._id
 
