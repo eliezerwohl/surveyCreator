@@ -58,6 +58,7 @@ $scope.viewAllSurveys = function(){
 				"id": id
 			}
 		}).then(function successCallback(response) {
+			var modal = document.getElementById('myModal');
 			modal.style.display = "block"
 		}, function errorCallback(response) {
 
