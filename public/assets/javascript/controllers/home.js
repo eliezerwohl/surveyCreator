@@ -39,8 +39,9 @@ app.controller("home", function($scope, $http, $rootScope, $state){
 			data:{"username":$scope.username,
 						"password":$scope.password}
 		}).then(function successCallback(response){
+			debugger
 			if (response.data == "error"){
-				console.log("no")
+				$scope.errorMsg="The information you entered is not correct.  Please try again"
 			}
 			else if(response.data="success"){
 				$state.go("loggedIn")
