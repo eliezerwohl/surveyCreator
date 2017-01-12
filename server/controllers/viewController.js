@@ -27,7 +27,20 @@ exports.userList = function(req, res){
 			res.send(docs[0]._doc._randomId)
 		}
 	})
+}
 
+exports.download = function(req, res){
+	Question.find({"_survey":"5745c30088fed4e50a133763"})
+	.populate("_answer")
+	.exec(function(err, docs){
+		if (err){
+			res.send(err)
+		}
+		else{
+			debugger
+			res.send(docs)
+		}
+	})
 }
 
 exports.surveySave = function(req, res){

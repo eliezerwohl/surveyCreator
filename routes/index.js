@@ -88,7 +88,7 @@ module.exports = function(app) {
 	});
 	app.get("/userList", view.userList)
 
-
+	app.post("/download", view.download)
 	app.post("/surveyId", view.surveyId)
 	app.post("/logout", deleteController.logout)
 	app.post("/viewAnswersByQuestion", view.viewAnswersByQuestion)
